@@ -12,7 +12,7 @@ Vagrant.configure(2) do |config|
 
   # Every Vagrant development environment requires a box. You can search for
   # boxes at https://atlas.hashicorp.com/search.
-  config.vm.box = "base"
+  config.vm.box = "ubuntu/trusty64"
 
   # Disable automatic box update checking. If you disable this, then
   # boxes will only be checked for updates when the user runs
@@ -22,7 +22,7 @@ Vagrant.configure(2) do |config|
   # Create a forwarded port mapping which allows access to a specific port
   # within the machine from a port on the host machine. In the example below,
   # accessing "localhost:8080" will access port 80 on the guest machine.
-  # config.vm.network "forwarded_port", guest: 80, host: 8080
+  config.vm.network "forwarded_port", guest: 3000, host: 3000, auto_correct: true
 
   # Create a private network, which allows host-only access to the machine
   # using a specific IP.
@@ -64,8 +64,26 @@ Vagrant.configure(2) do |config|
   # Enable provisioning with a shell script. Additional provisioners such as
   # Puppet, Chef, Ansible, Salt, and Docker are also available. Please see the
   # documentation for more information about their specific syntax and use.
-  # config.vm.provision "shell", inline: <<-SHELL
-  #   sudo apt-get update
-  #   sudo apt-get install -y apache2
-  # SHELL
+  project_ruby_version = File.read(File.join(__dir__, '.ruby-version')).strip
+  config.vm.provision "shell", privileged: false, inline: <<-SHELL
+    # Install RVM gpg key
+    gpg --keyserver hkp://keys.gnupg.net --recv-keys 409B6B1796C275462A1703113804BB82D39DC0E3
+
+    # Install RVM
+    curl -sSL https://get.rvm.io | bash -s stable
+
+    # Install correct Ruby version (read from .ruby-version)
+    source ~/.rvm/scripts/rvm
+    rvm install #{project_ruby_version}
+
+    # Install system-wide gems for the project
+    cd /vagrant
+    gem install bundle
+
+    # Install dependencies for building gem native extensions
+    sudo apt-get install -y ruby-dev libgmp3-dev
+
+    # Uglifier requires nodejs
+    sudo apt-get install -y nodejs
+  SHELL
 end
