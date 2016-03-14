@@ -13,6 +13,9 @@ inside the VM. The project is located at `/vagrant` inside the VM. You may need
 to run `bundle install` from inside that directory to install the remaining
 dependencies for the project before you can begin developing.
 
+To try out the application from the VM, run `rails server` to start the server,
+then access the site in your browser at <http://localhost:3000/>.
+
 When you're finished developing, you can close the ssh session and run
 `vagrant halt` to stop the VM.
 
