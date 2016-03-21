@@ -2,6 +2,16 @@ Rails.application.routes.draw do
 get 'GroceryTracker' => 'pages#home'
 get 'GroceryTracker/ShoppingList' => 'grocery_list#groceryList'
 get 'GroceryTracker/Recipies' => 'recipes#recipes'
+
+#User Routes
+get '/signup' => 'users#new'
+post '/newuser' => 'users#create'
+
+#Session Routes
+get '/login' => 'sessions#new'
+post '/login' => 'sessions#create'
+get '/logout' => 'sessions#destroy'
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
