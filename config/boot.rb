@@ -13,4 +13,4 @@ module DevelopmentDefaultHostOption
     end
   end
 end
-Rails::Server.prepend(DevelopmentDefaultHostOption)
+Rails::Server.send :prepend, DevelopmentDefaultHostOption

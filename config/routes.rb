@@ -5,7 +5,7 @@ get 'GroceryTracker/Recipies' => 'recipes#recipes'
 
 #User Routes
 get '/signup' => 'users#new'
-post '/newuser' => 'users#create'
+post '/newusers' => 'users#create'
 
 #Session Routes
 get '/login' => 'sessions#new'

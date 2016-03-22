@@ -1,4 +1,8 @@
 class GroceryListController < ApplicationController
-	def groceryList
-	end
+  
+  before_filter :authorize
+
+  def groceryList
+  end
+
 end
