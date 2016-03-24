@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
-get 'GroceryTracker' => 'pages#home'
-get 'GroceryTracker/ShoppingList' => 'grocery_list#groceryList'
-get 'GroceryTracker/Recipies' => 'recipes#recipes'
+get '/' => 'pages#home'
+get '/ShoppingList' => 'grocery_list#groceryList'
+get '/Recipies' => 'recipes#recipes'
 
 #User Routes
 get '/signup' => 'users#new'
