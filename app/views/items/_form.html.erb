@@ -1,0 +1,8 @@
+<%= form_for ([@grocery_list, @grocery_list.items.build]) do |f| %>
+
+    <%= f.label :name %>
+    <%= f.text_field :name %>
+
+    <%= f.submit %>
+
+<% end %>

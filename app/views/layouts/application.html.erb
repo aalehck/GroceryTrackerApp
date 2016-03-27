@@ -1,14 +1,44 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>GroceryTracker</title>
-  <%= stylesheet_link_tag    'default', media: 'all', 'data-turbolinks-track' => true %>
-  <%= javascript_include_tag 'default', 'data-turbolinks-track' => true %>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
 </head>
 <body>
+<div id="user">
+    <% if current_user %>
+        <a><%= current_user.user_name %></a> | <a><%= link_to 'Logout', '/logout' %></a>
+    <% else %>
+        <a><%= link_to 'Login', '/login'%></a> | <a><%= link_to 'Create Account', '/signup'%></a>
+    <% end %>
+</div>
 
+<header id="header">
+	<div id="menu">
+	    <nav>
+            <ul>
+                <li><a href="https://grocer-tracker-kadelano.c9users.io" class="">Home</a></li>
+                <li><a href="#" class="">Budget</a></li>
+                <li><a href="#" class="">Inventory</a></li>
+                <li><a href="/Recipies" class="">Recipies</a></li>
+                <li><a href="/ShoppingList" class="">Shopping List</a></li>
+            </ul>
+        </nav>
+    </div>
+</header>
+
+<!-- Page data -->
 <%= yield %>
+
+<footer id="footer">
+	<ul>
+	    <li>About Us</li>
+	    <li>Terms</li>
+	    <li>FAQ</li>
+	    <li>Other Stuff</li>
+	</ul>
+</footer>
 
 </body>
 </html>
