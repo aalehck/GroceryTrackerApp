@@ -1,0 +1,11 @@
+
+<h2>Search Results</h2>
+
+<% @resp.body['results'].each do |recipe| %>
+
+    <%= recipe['title'] %></br>
+    Ready In: <%= recipe['readyInMinutes'] %> minutes</br></br>
+
+<% end %>
+
+<%= link_to 'Back to Recipes', '/recipes' %>
