@@ -1,26 +1,25 @@
 <h2>Recipes</h2>
 
-Yar, here be recipes, if I implement this, yarrrrr</br>
+Yar, here be recipes, if I implement this, yarrrrr</br></br>
 
-<%= form_for('/recipes/search', method: 'get') do |f| %>
+<h3>Search for a Recipe</h3>
 
-    <%= f.label :cuisine %></br>
-    <%= f.text_field :cuisine %></br></br>
+<%= form_tag '/recipes/search', :method => 'get' do %>
+
+    <%= label_tag :cuisine %></br>
+    <%= text_field_tag :cuisine %></br>
     
-    <%= f.label :diet %></br>
-    <%= f.text_field :diet %></br></br>
+    <%= label_tag :diet %></br>
+    <%= text_field_tag :diet %></br>
 
-    <%= f.label :number %></br>
-    <%= f.text_field :number %></br></br>
+    <%= label_tag :number %></br>
+    <%= text_field_tag :number %></br>
 
-    <%= f.label :offset %></br>
-    <%= f.text_field :offset %></br></br>
+    <%= label_tag :offset %></br>
+    <%= text_field_tag :offset %></br>
 
-    <%= f.label :query %></br>
-    <%= f.text_field :query %></br></br>
+    <%= label_tag :query %></br>
+    <%= text_field_tag :query %></br>
 
-    <%= f.label : %></br>
-    <%= f.text_field : %></br></br>
-
-    <%= f.submit %>
+    <%= submit_tag "Search" %>
 <% end %>
