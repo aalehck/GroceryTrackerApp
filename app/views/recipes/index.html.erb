@@ -1,0 +1,26 @@
+<h2>Recipes</h2>
+
+Yar, here be recipes, if I implement this, yarrrrr</br>
+
+<%= form_for('/recipes/search', method: 'get') do |f| %>
+
+    <%= f.label :cuisine %></br>
+    <%= f.text_field :cuisine %></br></br>
+    
+    <%= f.label :diet %></br>
+    <%= f.text_field :diet %></br></br>
+
+    <%= f.label :number %></br>
+    <%= f.text_field :number %></br></br>
+
+    <%= f.label :offset %></br>
+    <%= f.text_field :offset %></br></br>
+
+    <%= f.label :query %></br>
+    <%= f.text_field :query %></br></br>
+
+    <%= f.label : %></br>
+    <%= f.text_field : %></br></br>
+
+    <%= f.submit %>
+<% end %>
