@@ -1,12 +1,37 @@
-<h1> New User Signup </h1>
+<title>Signup!</title>
+<!-- <body background='http://i.imgur.com/ayEYUZV.jpg'> -->
+    <style type="text/css">
+        body {
+            background-image: url(http://i.imgur.com/ayEYUZV.jpg);
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+    </style>
+<body>
+	<div class="loginform cf">
+       <h1> New User Signup </h1>
+        <%= form_for :user, url: '/newusers' do |f| %>
 
-<%= form_for :user, url: '/newusers' do |f| %>
+            <ul>
+                <li>
+                    <label>Username</label>
+                    <%= f.text_field :user_name %>
+                </li>
+                <li>
+                    <label>Email</label>
+                    <%= f.text_field :email %>
+                </li><br><br><br>
+                <li>
+                    <label>Password</label>
+                    <%= f.password_field :password %>
+                </li>
+                <li>
+                    <label>Confirmation</label>
+                    <%= f.password_field :password_confirmation %>
+                </li></br></br>
+                <li><%= f.submit "Submit" %></li>
+            </ul>
 
-    User Name: <%= f.text_field :user_name %></br></br>
-    Email: <%= f.text_field :email %></br></br>
-    Password: <%= f.password_field :password %></br></br>
-    Password Confirmation: <%= f.password_field :password_confirmation %></br></br>
-
-    <%= f.submit "Submit" %>
-
-<% end %>
+        <% end %>
+    </div>
+</body>
