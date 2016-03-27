@@ -1,0 +1,25 @@
+<h2>Recipes</h2>
+
+Yar, here be recipes, if I implement this, yarrrrr</br></br>
+
+<h3>Search for a Recipe</h3>
+
+<%= form_tag '/recipes/search', :method => 'get' do %>
+
+    <%= label_tag :cuisine %></br>
+    <%= text_field_tag :cuisine %></br>
+    
+    <%= label_tag :diet %></br>
+    <%= text_field_tag :diet %></br>
+
+    <%= label_tag :number %></br>
+    <%= text_field_tag :number %></br>
+
+    <%= label_tag :offset %></br>
+    <%= text_field_tag :offset %></br>
+
+    <%= label_tag :query %></br>
+    <%= text_field_tag :query %></br>
+
+    <%= submit_tag "Search" %>
+<% end %>
