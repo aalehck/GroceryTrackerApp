@@ -8,7 +8,9 @@ class ItemsController < ApplicationController
 
   def destroy
     @user = User.find(session[:user_id])
-    @items = @user.grocery_lists.items.find(params[:id])
+    @item = @user.grocery_list.items.find(params[:id])
+    @item.destroy
+    redirect_to grocery_list_path
   end
 
   def item_params
