@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   get '/' => 'pages#home'
-  get '/Recipies' => 'recipes#recipes'
+  get '/recipes' => 'recipes#recipes'
 =begin
   #Grocery List Routes
   get '/grocery_list' => 'grocery_list#show'
