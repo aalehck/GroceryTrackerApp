@@ -105,7 +105,7 @@
 				background: #A9A9A9;
 				text-align: center;
 				padding: 4px 0;
-    			position: fixed;
+    			/*position: fixed;*/
  				bottom: 0;
 			}
 			#footer ul {
