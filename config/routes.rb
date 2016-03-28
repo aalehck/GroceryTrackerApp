@@ -1,18 +1,14 @@
 Rails.application.routes.draw do
   get '/' => 'pages#home'
-  get '/Recipies' => 'recipes#recipes'
-=begin
-  #Grocery List Routes
-  get '/grocery_list' => 'grocery_list#show'
 
-  #Item Routes
-  post  '/grocery_list/item' => 'item#create'
-  delete '/grocery_list/item/:id' => 'item#destroy'
-=end
-
+  #Grocery List routes
   resource :grocery_list do
     resources :items
   end
+
+  #Recipe Routes
+  resources :recipes
+  get '/recipes/search' => 'recipes#search'
 
   #User Routes
   get '/signup' => 'users#new'
