@@ -1,0 +1,19 @@
+<% content_for :header do %>
+  <header id="header">
+    <div id="menu">
+      <nav>
+        <ul>
+          <li><a href="/" class="">Home</a></li>
+          <li><a href="#" class="">Budget</a></li>
+          <li><a href="#" class="">Inventory</a></li>
+          <li><a href="/recipes" class="">Recipes</a></li>
+          <li><a href="/grocery_list" class="">Shopping List</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+<% end %>
+<% content_for :content do %>
+  <%= yield %>
+<% end %>
+<%= render template: "layouts/application" %>
