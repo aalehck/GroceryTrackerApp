@@ -7,9 +7,12 @@ Rails.application.routes.draw do
   end
 
   #Recipe Routes
-  resources :recipes
-  get '/recipes/search' => 'recipes#search'
-
+  resources :recipes do 
+    collection do 
+      get :search
+    end
+  end
+  
   #User Routes
   get '/signup' => 'users#new'
   post '/newusers' => 'users#create'

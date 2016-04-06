@@ -6,6 +6,11 @@ class ItemsController < ApplicationController
     redirect_to '/grocery_list'
   end
 
+  def show
+    @user = User.find(session[:user_id])
+    @item = @user.grocery_list.items.find(params[:id])
+  end
+
   def destroy
     @user = User.find(session[:user_id])
     @item = @user.grocery_list.items.find(params[:id])

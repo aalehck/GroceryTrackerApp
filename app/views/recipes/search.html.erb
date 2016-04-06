@@ -1,0 +1,22 @@
+<title>Search Results</title>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+</head>
+
+    <div id="wrapper">
+		<main>
+			<div id="content">
+                <h2>Search Results</h2>
+
+                <% @resp.body['results'].each do |recipe| %>
+
+                    <%= recipe['title'] %></br>
+                    Ready In: <%= recipe['readyInMinutes'] %> minutes</br></br>
+
+                <% end %>
+
+                <%= link_to 'Back to Recipes', '/recipes' %>
+            </div>
+        </main>
+    </div>
+

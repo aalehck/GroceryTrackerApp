@@ -18,8 +18,8 @@ class RecipesController < ApplicationController
   def create
   end
   
- # def show
-  #end
+  def show
+  end
 
   def destroy
   end
@@ -29,7 +29,7 @@ class RecipesController < ApplicationController
 #.require(:recipe).permit(:cuisine, :diet, :number, :offset, :query)
   end
 
-  def show
+  def search
     search_params = recipe_params
 
     uri = "https://spoonacular-recipe-food-nutrition-v1.p.mashape.com/recipes/search?cuisine=#{search_params[:cuisine]}&diet=#{search_params[:diet]}&number=#{search_params[:number]}&offset=#{search_params[:offset]}&query=#{search_params[:query]}"
