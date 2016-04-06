@@ -1,0 +1,13 @@
+<h2><%= @body['title'] %></h2>
+Time: <%= @body['readyInMinutes']%> minutes</br>
+Servings: <%= @body['servings']%>
+<h3>Ingredients</h3>
+
+<% @body['extendedIngredients'].each do |ingredient| %>
+    <% if !ingredient['originalString'].empty? %>
+	<%= ingredient['originalString'] %></br></br>
+    <% else %>
+	<%= ingredient['name'] %></br>
+	Amount: <%= ingredient['amount']%> <%= ingredient['unit']%></br></br>
+    <% end %>
+<% end %>

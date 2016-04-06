@@ -1,31 +1,31 @@
 <title></title>
 
-    <div id="wrapper">
-		<main>
-			<div id="content">
-                <h2>Recipes</h2>
+<div id="wrapper">
+    <main>
+	<div id="content">
+	    <h2>Recipes</h2>
 
-                <h3>Search for a Recipe</h3>
+            <h3>Search for a Recipe</h3>
 
-                <%= form_tag '/recipes/search', :method => 'get' do %>
+            <%= form_tag '/recipes/search', :method => 'get' do %>
 
-                    <%= label_tag :cuisine %></br>
-                    <%= text_field_tag :cuisine %></br>
-    
-                    <%= label_tag :diet %></br>
-                    <%= text_field_tag :diet %></br>
+                <%= label_tag :cuisine %></br>
+                <%= text_field_tag :cuisine %></br>
+		
+                <%= label_tag :diet %></br>
+                <%= text_field_tag :diet %></br>
 
-                    <%= label_tag :number %></br>
-                    <%= text_field_tag :number %></br>
+                <%= label_tag :number %></br>
+                <%= text_field_tag :number %></br>
 
-                    <%= label_tag :offset %></br>
-                    <%= text_field_tag :offset %></br>
+                <%= label_tag :offset %></br>
+                <%= text_field_tag :offset %></br>
 
-                    <%= label_tag :query %></br>
-                    <%= text_field_tag :query %></br><br>
+                <%= label_tag :query %></br>
+                <%= text_field_tag :query %></br><br>
 
-                    <%= submit_tag "Search" %>
-                <% end %><br><br>
-            </div>
-        </main>
-    </div>
+                <%= submit_tag "Search" %>
+            <% end %><br><br>
+        </div>
+    </main>
+</div>

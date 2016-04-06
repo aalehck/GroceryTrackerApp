@@ -19,6 +19,9 @@ class RecipesController < ApplicationController
   end
   
   def show
+    @user = User.find(session[:user_id])
+    @recipes = @user.recipes.find(params[:id])
+
   end
 
   def destroy
@@ -36,6 +39,19 @@ class RecipesController < ApplicationController
     
     @resp = Unirest.get uri, headers:{ "X-Mashape-Key" => "o0PEFR8zTDmshlk3dBI4YmNg7O2ep12IyWrjsng7WgOycYs0bF"}
         
+  end
+
+  def search_result
+    params = recipe_params
+
+    uri = "https://spoonacular-recipe-food-nutrition-v1.p.mashape.com/recipes/#{params[:recipe_id]}/information?includeNutrition=false"
+
+    response = Unirest.get uri,
+    headers:{
+      "X-Mashape-Key" => "o0PEFR8zTDmshlk3dBI4YmNg7O2ep12IyWrjsng7WgOycYs0bF"
+    }
+
+    @body = response.body
   end
 
   private :recipe_params

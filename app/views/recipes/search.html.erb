@@ -11,7 +11,9 @@
                 <% @resp.body['results'].each do |recipe| %>
 
                     <%= recipe['title'] %></br>
-                    Ready In: <%= recipe['readyInMinutes'] %> minutes</br></br>
+                    Ready In: <%= recipe['readyInMinutes'] %> minutes</br>
+		    <%=link_to "View Recipe", search_result_recipes_path(:recipe_id => recipe['id'], :search_api => 1) %> </br>
+		    <%= recipe['id'] %>
 
                 <% end %>
 
