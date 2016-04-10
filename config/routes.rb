@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   get '/' => 'pages#home'
+  get '/budget' => 'budget#index'
 
   #Grocery List routes
   resource :grocery_list do
