@@ -1,8 +1,9 @@
 class CreateItems < ActiveRecord::Migration
   def change
     create_table :items do |t|
-      t.string :name
-      t.decimal :amount
+      t.string  :name
+      t.decimal :list_amount
+      t.decimal :inventory_amount
       t.decimal :cost
       t.integer :calories
       t.decimal :carbs
@@ -27,6 +28,7 @@ class CreateItems < ActiveRecord::Migration
       
       
       t.references :grocery_list, index: true, foreign_key: true
+      t.references :recipe, index: true, foreign_key: true
 
       t.timestamps null: false
     end

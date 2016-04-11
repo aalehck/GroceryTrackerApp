@@ -2,8 +2,18 @@
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 </head>
+<h2><%= @recipe.title %></h2>
+<% @recipe.information['extendedIngredients'].each do |ingredient| %>
+    <% if not ingredient['originalString'].empty? %>
+	<%= ingredient['originalString'] %></br></br>
+    <% else %>
+	<%= ingredient['name'] %></br>
+	Amount: <%= ingredient['amount']%> <%= ingredient['unit']%></br></br>
+    <% end %>
+<% end %>
+<%= link_to "Back to All Recipes", recipes_path %>
 
-<% puts @response %>
+
 
 
 

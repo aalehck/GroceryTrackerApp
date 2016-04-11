@@ -16,12 +16,20 @@ class RecipesController < ApplicationController
   end
   
   def create
+    @user = User.find(session[:user_id])
+
+    body = (eval(params[:information]))
+
+    @recipe = @user.recipes.create(title: body['title'], time: body['readyInMinutes'], information: body)
+
+    redirect_to recipes_path
   end
   
   def show
     @user = User.find(session[:user_id])
-    @recipes = @user.recipes.find(params[:id])
-
+    @recipe = @user.recipes.find(params[:id])
+    
+#    puts @recipe.information[][0]
   end
 
   def destroy
@@ -29,7 +37,6 @@ class RecipesController < ApplicationController
 
   def recipe_params
     params
-#.require(:recipe).permit(:cuisine, :diet, :number, :offset, :query)
   end
 
   def search

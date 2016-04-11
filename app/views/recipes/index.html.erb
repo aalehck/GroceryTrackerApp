@@ -4,7 +4,11 @@
     <main>
 	<div id="content">
 	    <h2>Recipes</h2>
-
+	    <% @recipes.each do |r| %>
+		<%= r.title %></br>
+		<%= r.time%> minutes</br>
+		<%= link_to "View Recipe", recipe_path(r.id) %></br></br>
+	    <% end %>
             <h3>Search for a Recipe</h3>
 
             <%= form_tag '/recipes/search', :method => 'get' do %>

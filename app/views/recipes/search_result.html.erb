@@ -8,6 +8,10 @@ Servings: <%= @body['servings']%>
 	<%= ingredient['originalString'] %></br></br>
     <% else %>
 	<%= ingredient['name'] %></br>
-	Amount: <%= ingredient['amount']%> <%= ingredient['unit']%></br></br>
+	Amount: <%= ingredient['amount']%> <%= ingredient['unit']%></br>
     <% end %>
+<% end %>
+<%=  form_tag recipes_path, :method => :post do %>
+    <%= hidden_field_tag :information, @body %>
+    <%= submit_tag "Save to Recipes" %>
 <% end %>
