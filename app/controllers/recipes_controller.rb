@@ -20,6 +20,19 @@ class RecipesController < ApplicationController
 
     body = (eval(params[:information]))
 
+    body['extendedIngredients'].each do |i|
+      ingredient = @user.grocery_list.items.where('lower(name) = ?', i['name'])
+
+      puts "stuff"
+
+      if ingredient.empty?
+        puts "Making some shit"
+        ingredient ||= @user.grocery_list.items.create(name: i['name'].downcase, list_amount: i['amount'])
+      else
+        ingredient.update(:list_amount => ingredient.list_amount + i['amount'])
+      end
+    end
+
     @recipe = @user.recipes.create(title: body['title'], time: body['readyInMinutes'], information: body)
 
     redirect_to recipes_path
@@ -28,11 +41,13 @@ class RecipesController < ApplicationController
   def show
     @user = User.find(session[:user_id])
     @recipe = @user.recipes.find(params[:id])
-    
-#    puts @recipe.information[][0]
   end
 
   def destroy
+    @user = User.find(session[:user_id])
+    @recipe = @user.recipes.find(params[:id])
+    @recipe.destroy
+    redirect_to recipes_path
   end
 
   def recipe_params
