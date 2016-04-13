@@ -6,13 +6,6 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-  <div id="user">
-      <% if current_user %>
-          <a><%= current_user.user_name %></a> | <a><%= link_to 'Logout', '/logout' %></a>
-      <% else %>
-          <a><%= link_to 'Login', '/login'%></a> | <a><%= link_to 'Create Account', '/signup'%></a>
-      <% end %>
-  </div>
   <%= yield :header %>
 
   <!-- Page data -->
