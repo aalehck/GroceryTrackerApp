@@ -5,7 +5,8 @@
 	<div id="content">
 	    <h2>Recipes</h2>
 	    <% @recipes.each do |r| %>
-		<%= r.title %></br>
+		<%= r.title %>
+		<%= link_to image_tag('help_x_btn.png', size: "14x14"), recipe_path(:id => r.id), method: :delete, data: { confirm: 'Are you sure?' } %></br>
 		<%= r.time%> minutes</br>
 		<%= link_to "View Recipe", recipe_path(r.id) %></br></br>
 	    <% end %>

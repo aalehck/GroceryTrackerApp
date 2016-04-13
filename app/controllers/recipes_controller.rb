@@ -23,13 +23,10 @@ class RecipesController < ApplicationController
     body['extendedIngredients'].each do |i|
       ingredient = @user.grocery_list.items.where('lower(name) = ?', i['name'])
 
-      puts "stuff"
-
       if ingredient.empty?
-        puts "Making some shit"
-        ingredient ||= @user.grocery_list.items.create(name: i['name'].downcase, list_amount: i['amount'])
+        ingredient = @user.grocery_list.items.create(name: i['name'].downcase, list_amount: i['amount'])
       else
-        ingredient.update(:list_amount => ingredient.list_amount + i['amount'])
+        #ingredient.update(:list_amount => ingredient.list_amount + i['amount'])
       end
     end
 
