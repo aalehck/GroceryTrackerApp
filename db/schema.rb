@@ -11,7 +11,15 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160326235427) do
+ActiveRecord::Schema.define(version: 20160402052120) do
+
+  create_table "budgets", force: :cascade do |t|
+    t.integer  "budget"
+    t.boolean  "week"
+    t.boolean  "month"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "grocery_lists", force: :cascade do |t|
     t.integer  "user_id"
@@ -23,22 +31,54 @@ ActiveRecord::Schema.define(version: 20160326235427) do
 
   create_table "items", force: :cascade do |t|
     t.string   "name"
+    t.decimal  "list_amount"
+    t.decimal  "inventory_amount"
+    t.decimal  "cost"
+    t.integer  "calories"
+    t.decimal  "carbs"
+    t.decimal  "sugar"
+    t.decimal  "cholesterol"
+    t.decimal  "sodium"
+    t.decimal  "protein"
+    t.decimal  "b1"
+    t.decimal  "selenium"
+    t.decimal  "folate"
+    t.decimal  "manganese"
+    t.decimal  "b3"
+    t.decimal  "b2"
+    t.decimal  "iron"
+    t.decimal  "phosphorus"
+    t.decimal  "fiber"
+    t.decimal  "copper"
+    t.decimal  "magnesium"
+    t.decimal  "zinc"
+    t.decimal  "b5"
+    t.decimal  "potassium"
     t.integer  "grocery_list_id"
-    t.datetime "created_at",      null: false
-    t.datetime "updated_at",      null: false
+    t.integer  "recipe_id"
+    t.datetime "created_at",       null: false
+    t.datetime "updated_at",       null: false
   end
 
   add_index "items", ["grocery_list_id"], name: "index_items_on_grocery_list_id"
+  add_index "items", ["recipe_id"], name: "index_items_on_recipe_id"
 
   create_table "recipes", force: :cascade do |t|
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.string   "title"
+    t.integer  "time"
+    t.text     "information"
+    t.integer  "user_id"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
   end
+
+  add_index "recipes", ["user_id"], name: "index_recipes_on_user_id"
 
   create_table "users", force: :cascade do |t|
     t.string   "user_name"
     t.string   "email"
     t.string   "password_digest"
+    t.decimal  "budget"
     t.datetime "created_at",      null: false
     t.datetime "updated_at",      null: false
   end

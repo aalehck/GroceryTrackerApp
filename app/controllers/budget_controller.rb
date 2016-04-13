@@ -2,7 +2,7 @@ class BudgetController < ApplicationController
 	def index
 		@message = "Cost information below:"
 		
-		@getPrice = "4 ounces cheddar cheese"
+		@getPrice = "9000000 ounces cheddar cheese"
 		@getPrice2 = "1 pound ground beef"
 		@getPrice3 = "24 ounces broccoli"		
 		
