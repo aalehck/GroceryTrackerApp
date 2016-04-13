@@ -3,6 +3,9 @@
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 </head>
 <h2><%= @recipe.title %></h2>
+
+<img src="<%= @recipe.information['image'] %>" style="width:304px;height:228px;"></br></br>
+
 <% @recipe.information['extendedIngredients'].each do |ingredient| %>
     <% if not ingredient['originalString'].empty? %>
 	<%= ingredient['originalString'] %></br></br>

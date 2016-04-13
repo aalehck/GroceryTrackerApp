@@ -1,6 +1,9 @@
 <h2><%= @body['title'] %></h2>
 Time: <%= @body['readyInMinutes']%> minutes</br>
 Servings: <%= @body['servings']%>
+
+<img src="<%= @body['image'] %>" style="width:304px;height:228px;"></br></br>
+
 <h3>Ingredients</h3>
 
 <% @body['extendedIngredients'].each do |ingredient| %>
