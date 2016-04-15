@@ -71,7 +71,18 @@ class RecipesController < ApplicationController
     }
 
     @body = response.body
-  end
+	#private :recipe_params
+	@message = "Cost information below:"
+	@getCost = Array.new
+	@body['extendedIngredients'].each do |ingredient|
+		if !ingredient['originalString'].empty?
+			@getCost.push(ingredient['originalString'])
+		else
+			@getCost.push(ingredient['name'] + ingredient['amount'] + ingredient['unit'])
+		end
+	
+	end
 
-  private :recipe_params
+  
+  end
 end

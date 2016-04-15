@@ -18,3 +18,17 @@ Servings: <%= @body['servings']%>
     <%= hidden_field_tag :information, @body %>
     <%= submit_tag "Save to Recipes" %>
 <% end %>
+<h1>Budget/Costs</h1>
+	<p><%= @message %></p>
+	<pre id="spoonacular-ingredients" style="display:none">
+		<% @getCost.each do |ingredient| %>
+			<%= ingredient %>
+		<% end %>	
+	</pre>
+	<div id="spoonacular-price-estimator"></div>
+<script type="text/javascript">
+	var spoonacularServings = 4;
+	var spoonacularPriceView = 1;
+</script>
+<script type="text/javascript" src="https://code.jquery.com/jquery-1.9.1.min.js"></script>
+<script type="text/javascript" src="https://spoonacular.com/cdn/spoonacular-1.5.min.js"></script>
