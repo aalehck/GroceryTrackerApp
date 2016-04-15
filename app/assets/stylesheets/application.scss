@@ -13,13 +13,18 @@
  *= require_tree .
  *= require_self
  */
+
+ // "bootstrap-sprockets" must be imported before "bootstrap" and "bootstrap/variables"
+ @import "bootstrap-sprockets";
+ @import "bootstrap";
+
 			body {
 				margin:0;
 				padding:0;
 				font-family: Tahoma, Geneva, sans-serif;
 				line-height: 1.5em;
 			}
-			
+
 			#header {
 				background: #28774F;
 				height: 50px;
@@ -28,14 +33,14 @@
 				margin: 0;
 				padding-top: 15px;
 			}
-			
+
 			main {
 				padding-bottom: 10010px;
 				margin-bottom: -10000px;
 				float: left;
 				width: 100%;
 			}
-			
+
 			#nav {
 				padding-bottom: 10010px;
 				margin-bottom: -10000px;
@@ -44,7 +49,7 @@
 				margin-left: -100%;
 				background: #eee;
 			}
-			
+
 			#user {
 				background-color: #0F5933;
 			}
@@ -53,7 +58,7 @@
 				text-decoration: none;
 				color: #000;
 			}
-			
+
 			#menu {
 				padding-top: 12px;
     			width: 650px;
@@ -64,32 +69,32 @@
 			    text-align: center;
         		border-radius: 8px;
 			}
-			#menu li { 
-				display: inline; 
-				padding: 20px; 
+			#menu li {
+				display: inline;
+				padding: 20px;
 			}
 			#menu a:hover {
 				padding: 5px;
 			    background-color: #0F5933;
 			}
-	
+
 			#wrapper {
 				overflow: hidden;
 			}
-						
+
 			#content {
 				margin-left: 230px; /* Same as 'nav' width */
 			}
-			
+
 			.innertube {
 				margin: 15px; /* Padding for content */
 				margin-top: 0;
 			}
-		
+
 			p {
 				color: #555;
 			}
-	
+
 			nav ul {
 				list-style-type: none;
 				margin: 0;
@@ -123,7 +128,7 @@
 			#footer li:first-child:before {
 				content: none;
 			}
-			
+
 			/* LOGIN STUFF */
 			.loginform label {
 				display: block;
@@ -135,7 +140,7 @@
 				padding: 25px;
 				background-color: rgba(250,250,250,0.5);
 				border-radius: 5px;
-			    box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.2), 
+			    box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.2),
     			inset 0px 1px 0px 0px rgba(250, 250, 250, 0.5);
     			border: 1px solid rgba(0, 0, 0, 0.3);
 			}
@@ -149,7 +154,7 @@
 			}
 			.cf:before,
 			.cf:after {
-			    content: ""; 
+			    content: "";
 			    display: table;
 			}
 			.cf:after {
