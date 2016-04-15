@@ -1,0 +1,20 @@
+<h2><%= @body['title'] %></h2>
+Time: <%= @body['readyInMinutes']%> minutes</br>
+Servings: <%= @body['servings']%>
+
+<img src="<%= @body['image'] %>" style="width:304px;height:228px;"></br></br>
+
+<h3>Ingredients</h3>
+
+<% @body['extendedIngredients'].each do |ingredient| %>
+    <% if !ingredient['originalString'].empty? %>
+	<%= ingredient['originalString'] %></br></br>
+    <% else %>
+	<%= ingredient['name'] %></br>
+	Amount: <%= ingredient['amount']%> <%= ingredient['unit']%></br>
+    <% end %>
+<% end %>
+<%=  form_tag recipes_path, :method => :post do %>
+    <%= hidden_field_tag :information, @body %>
+    <%= submit_tag "Save to Recipes" %>
+<% end %>

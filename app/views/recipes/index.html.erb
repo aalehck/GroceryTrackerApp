@@ -1,33 +1,36 @@
 <title></title>
 
-    <div id="wrapper">
-		<main>
-			<div id="content">
-                <h2>Recipes</h2>
+<div id="wrapper">
+    <main>
+	<div id="content">
+	    <h2>Recipes</h2>
+	    <% @recipes.each do |r| %>
+		<%= r.title %>
+		<%= link_to image_tag('help_x_btn.png', size: "14x14"), recipe_path(:id => r.id), method: :delete, data: { confirm: 'Are you sure?' } %></br>
+		<%= r.time%> minutes</br>
+		<%= link_to "View Recipe", recipe_path(r.id) %></br></br>
+	    <% end %>
+            <h3>Search for a Recipe</h3>
 
-                Yar, here be recipes, if I implement this, yarrrrr</br></br>
+            <%= form_tag '/recipes/search', :method => 'get' do %>
 
-                <h3>Search for a Recipe</h3>
+                <%= label_tag :cuisine %></br>
+                <%= text_field_tag :cuisine %></br>
+		
+                <%= label_tag :diet %></br>
+                <%= text_field_tag :diet %></br>
 
-                <%= form_tag '/recipes/search', :method => 'get' do %>
+                <%= label_tag :number %></br>
+                <%= text_field_tag :number %></br>
 
-                    <%= label_tag :cuisine %></br>
-                    <%= text_field_tag :cuisine %></br>
-    
-                    <%= label_tag :diet %></br>
-                    <%= text_field_tag :diet %></br>
+                <%= label_tag :offset %></br>
+                <%= text_field_tag :offset %></br>
 
-                    <%= label_tag :number %></br>
-                    <%= text_field_tag :number %></br>
+                <%= label_tag :query %></br>
+                <%= text_field_tag :query %></br><br>
 
-                    <%= label_tag :offset %></br>
-                    <%= text_field_tag :offset %></br>
-
-                    <%= label_tag :query %></br>
-                    <%= text_field_tag :query %></br><br>
-
-                    <%= submit_tag "Search" %>
-                <% end %><br><br>
-            </div>
-        </main>
-    </div>
+                <%= submit_tag "Search" %>
+            <% end %><br><br>
+        </div>
+    </main>
+</div>

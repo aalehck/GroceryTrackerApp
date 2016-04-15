@@ -1,8 +1,34 @@
 class CreateItems < ActiveRecord::Migration
   def change
     create_table :items do |t|
-      t.string :name
+      t.string  :name
+      t.decimal :list_amount
+      t.decimal :inventory_amount
+      t.decimal :cost
+      t.integer :calories
+      t.decimal :carbs
+      t.decimal :sugar
+      t.decimal :cholesterol
+      t.decimal :sodium
+      t.decimal :protein
+      t.decimal :b1
+      t.decimal :selenium
+      t.decimal :folate
+      t.decimal :manganese
+      t.decimal :b3
+      t.decimal :b2
+      t.decimal :iron
+      t.decimal :phosphorus
+      t.decimal :fiber
+      t.decimal :copper
+      t.decimal :magnesium
+      t.decimal :zinc
+      t.decimal :b5
+      t.decimal :potassium
+      
+      
       t.references :grocery_list, index: true, foreign_key: true
+      t.references :recipe, index: true, foreign_key: true
 
       t.timestamps null: false
     end

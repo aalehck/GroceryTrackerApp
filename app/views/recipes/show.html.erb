@@ -1,22 +1,22 @@
-<title>Search Results</title>
+<title>Recipe Information</title>
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 </head>
+<h2><%= @recipe.title %></h2>
 
-    <div id="wrapper">
-		<main>
-			<div id="content">
-                <h2>Search Results</h2>
+<img src="<%= @recipe.information['image'] %>" style="width:304px;height:228px;"></br></br>
 
-                <% @resp.body['results'].each do |recipe| %>
+<% @recipe.information['extendedIngredients'].each do |ingredient| %>
+    <% if not ingredient['originalString'].empty? %>
+	<%= ingredient['originalString'] %></br></br>
+    <% else %>
+	<%= ingredient['name'] %></br>
+	Amount: <%= ingredient['amount']%> <%= ingredient['unit']%></br></br>
+    <% end %>
+<% end %>
+<%= link_to "Back to All Recipes", recipes_path %>
 
-                    <%= recipe['title'] %></br>
-                    Ready In: <%= recipe['readyInMinutes'] %> minutes</br></br>
 
-                <% end %>
 
-                <%= link_to 'Back to Recipes', '/recipes' %>
-            </div>
-        </main>
-    </div>
+
 
