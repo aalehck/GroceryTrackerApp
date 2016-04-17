@@ -13,9 +13,9 @@
                     <div class="columns">
                         <div class="col-lg-3 col-sm-6">
                             <div class="card hovercard">
-                                <img class="cardheader" src="<%= recipe['image'] %>" />
+                                <img class="cardheader" src="<%= @resp.body['baseUri'] %><%= recipe['image'] %>" />
                                 <div class="avatar">
-                                    <img alt="" src="<%= recipe['image'] %>">
+                                    <img alt="" src="<%= @resp.body['baseUri'] %><%= recipe['image'] %>">
                                 </div>
                                 <div class="info">
                                     <div class="title">
