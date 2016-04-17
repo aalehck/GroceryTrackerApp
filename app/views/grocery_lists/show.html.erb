@@ -1,7 +1,11 @@
 <h2>Grocery List</h2>
 
 <div id="inventory">
-<%= render @user.grocery_list.items %>
+    <% @user.grocery_list.items.each do |item| %>
+	<% if item.list_amount > 0.0 %>
+	    <%= render item %>
+	<% end %>
+    <% end %>
 </div>
 
 <%= button_to "Add Items to Inventory", add_items_inventory_path %></br>
