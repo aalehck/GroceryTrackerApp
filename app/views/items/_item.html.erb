@@ -1,11 +1,13 @@
 <p>
-    <%= link_to item.name, grocery_list_item_path(:id => item.id, method: :show)%>   
-    <%= link_to image_tag('help_x_btn.png', size: "14x14"), grocery_list_item_path(:id => item.id),
-    method: :delete,
-    data: { confirm: 'Are you sure?' } %></br>
-    <% if request.env['PATH_INFO'] == "/grocery_list" %>
-	<%= item.list_amount %>
-    <% else %>
-	<%= item.inventory_amount %>
-    <% end %></br>
+    <% if item.list_amount != 0.0 %>
+	<%= link_to item.name, grocery_list_item_path(:id => item.id, method: :show)%>   
+	<%= link_to image_tag('help_x_btn.png', size: "14x14"), grocery_list_item_path(:id => item.id),
+	method: :delete,
+	data: { confirm: 'Are you sure?' } %></br>
+	<% if request.env['PATH_INFO'] == "/grocery_list" %>
+	    <%= item.list_amount %>
+	<% else %>
+	    <%= item.inventory_amount %>
+	<% end %></br>
+    <% end %>
 </p>

@@ -2,11 +2,15 @@ class InventoriesController < ApplicationController
   
   before_filter :authorize
 
-  def create
+  def add_items
     @user = User.find(session[:user_id])
     @inventory = []
     @user.grocery_list.items.each do |x|
-    
+      if x.list_amount != 0.0
+        Item.update(x.id, :inventory_amount => (x.inventory_amount + x.list_amount), :list_amount => 0.0)
+      end
+    end
+    redirect_to grocery_list_path
   end
 
   def show

@@ -8,6 +8,10 @@ Rails.application.routes.draw do
 
   #Inventory routes
   resource :inventory do
+    collection do
+      post :add_items
+    end
+
     resources :items
   end
 
