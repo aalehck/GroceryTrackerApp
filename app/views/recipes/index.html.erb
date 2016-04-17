@@ -3,10 +3,10 @@
 <div id="wrapper">
     <main>
 	<div id="content"><br>
-	    <!-- start -->
+	    <!-- Search button -->
         <div><button data-toggle="modal" data-target="#squarespaceModal" class="btn btn-primary">Search for a Recipe!</button></div>
 	    
-            <!-- line modal -->
+            <!-- Search Box -->
             <div class="modal fade" id="squarespaceModal" tabindex="-1" role="dialog" aria-labelledby="modalLabel" aria-hidden="true">
                 <div class="modal-dialog">  
                     <div class="modal-content">
@@ -49,8 +49,9 @@
                         </div>
                     </div>
                 </div>
-	    <!--end -->
+	    <!-- End Search Box -->
 	    
+	    <!-- Saved Recipes -->
         <h2>Recipes</h2>
         
         <% @recipes.each do |r| %>
@@ -74,11 +75,10 @@
                     </div>
                 </div>
             </div>
-        
-        
-        
-        	
-        
+                
+                
+                	    
+            <!-- View Recipes -->
             <div class="modal fade" id=<%= r.title %> tabindex="-1" role="dialog" aria-labelledby="modalLabel" aria-hidden="true">
                 <div class="modal-dialog">
                     <div class="modal-content">

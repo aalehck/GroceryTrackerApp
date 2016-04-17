@@ -1,9 +1,13 @@
-<h2>Grocery List</h2>
-
-<div id="inventory">
-<%= render @user.grocery_list.items %>
+<title>Grocery List</title>
+<div id="wrapper">
+    <main>
+        <div id="content">
+            <h2>Grocery List</h2>
+            <div id="inventory">
+                <h4><%= render @user.grocery_list.items %></h4>
+            </div>
+            <%= render "items/form" %>
+        </div>
+    </main>
 </div>
-
-<%= render "items/form" %>
-
     
