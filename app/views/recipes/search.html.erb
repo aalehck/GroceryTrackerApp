@@ -7,16 +7,30 @@
 		<main>
 			<div id="content">
                 <h2>Search Results</h2>
-
-                <% @resp.body['results'].each do |recipe| %>
-
-                    <%= recipe['title'] %></br>
-                    Ready In: <%= recipe['readyInMinutes'] %> minutes</br>
-		    <%=link_to "View Recipe", search_result_recipes_path(:recipe_id => recipe['id'], :search_api => 1) %> </br>
-
-                <% end %>
-
                 <%= link_to 'Back to Recipes', '/recipes' %>
+                <% @resp.body['results'].each do |recipe| %>
+                
+                    <div class="columns">
+                        <div class="col-lg-3 col-sm-6">
+                            <div class="card hovercard">
+                                <img class="cardheader" src="<%= recipe['image'] %>" />
+                                <div class="avatar">
+                                    <img alt="" src="<%= recipe['image'] %>">
+                                </div>
+                                <div class="info">
+                                    <div class="title">
+                                        <%=link_to "View Recipe", search_result_recipes_path(:recipe_id => recipe['id'], :search_api => 1) %>
+                                        <button data-toggle="modal" data-target=<%="#" + recipe['title'] %> class="astext"><%= recipe['title'] %></button>
+                                    </div>
+                                    <div class="desc"><%= recipe['readyInMinutes'] %> minutes</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    
+                <% end %>
+                
             </div>
         </main>
     </div>
