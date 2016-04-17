@@ -6,6 +6,11 @@ Rails.application.routes.draw do
     resources :items
   end
 
+  #Inventory routes
+  resource :inventory do
+    resources :items
+  end
+
   #Recipe Routes
   resources :recipes do 
     collection do 
