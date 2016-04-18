@@ -1,7 +1,11 @@
 <h2>Grocery List</h2>
 
 <div id="inventory">
-<%= render @user.grocery_lists.items %>
+    <% @user.grocery_lists.items.each do |item| %>
+	<% if item.list_amount > 0.0 %>
+	    <%= render item %>
+	<% end %>
+    <% end %>
 </div>
 
 <%= render "items/form" %>
