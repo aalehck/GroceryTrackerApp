@@ -10,7 +10,7 @@
                 <%= link_to 'Back to Recipes', '/recipes' %>
                 <% @resp.body['results'].each do |recipe| %>
                 
-                    <div class="columns">
+                    <div>
                         <div class="col-lg-3 col-sm-6">
                             <div class="card hovercard">
                                 <img class="cardheader" src="<%= @resp.body['baseUri'] %><%= recipe['image'] %>" />
@@ -18,9 +18,8 @@
                                     <img alt="" src="<%= @resp.body['baseUri'] %><%= recipe['image'] %>">
                                 </div>
                                 <div class="info">
-                                    <div class="title">
-                                        <%=link_to "View Recipe", search_result_recipes_path(:recipe_id => recipe['id'], :search_api => 1) %>
-                                        <button data-toggle="modal" data-target=<%="#" + recipe['title'] %> class="astext"><%= recipe['title'] %></button>
+                                    <div class="title astext">
+                                        <%=link_to recipe['title'], search_result_recipes_path(:recipe_id => recipe['id'], :search_api => 1) %>
                                     </div>
                                     <div class="desc"><%= recipe['readyInMinutes'] %> minutes</div>
                                 </div>
@@ -30,6 +29,14 @@
 
                     
                 <% end %>
+                
+                
+                
+                
+                
+                
+                
+                
                 
             </div>
         </main>
