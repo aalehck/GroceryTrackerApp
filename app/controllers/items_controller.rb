@@ -19,7 +19,7 @@ class ItemsController < ApplicationController
   end
 
   def item_params
-    params.require(:item).permit(:name)
+    params.require(:item).permit(:name, :list_amount)
   end
   
   private :item_params

@@ -24,7 +24,7 @@ ActiveRecord::Schema.define(version: 20160326235427) do
   create_table "items", force: :cascade do |t|
     t.string   "name"
     t.decimal  "list_amount"
-    t.decimal  "inventory_amount"
+    t.decimal  "inventory_amount", default: 0.0
     t.decimal  "cost"
     t.integer  "calories"
     t.decimal  "carbs"
@@ -48,8 +48,8 @@ ActiveRecord::Schema.define(version: 20160326235427) do
     t.decimal  "potassium"
     t.integer  "grocery_list_id"
     t.integer  "recipe_id"
-    t.datetime "created_at",       null: false
-    t.datetime "updated_at",       null: false
+    t.datetime "created_at",                     null: false
+    t.datetime "updated_at",                     null: false
   end
 
   add_index "items", ["grocery_list_id"], name: "index_items_on_grocery_list_id"

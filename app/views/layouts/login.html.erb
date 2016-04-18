@@ -1,3 +1,7 @@
+<% content_for :head do %>
+  <%= stylesheet_link_tag 'login', media: 'all', 'data-turbolinks-track' => true %>
+  <%= yield :head %>
+<% end %>
 <% content_for :content do %>
   <%= yield %>
 <% end %>

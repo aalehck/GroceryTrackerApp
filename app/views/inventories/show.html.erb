@@ -1,0 +1,7 @@
+<h2>Inventory</h2>
+
+<% @inventory.each do |item| %>
+    <% if item.inventory_amount != 0.0 %>
+	<%= render item %>
+    <% end %>
+<% end %>

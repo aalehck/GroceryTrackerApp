@@ -3,7 +3,7 @@ class CreateItems < ActiveRecord::Migration
     create_table :items do |t|
       t.string  :name
       t.decimal :list_amount
-      t.decimal :inventory_amount
+      t.decimal :inventory_amount, :default => 0.0
       t.decimal :cost
       t.integer :calories
       t.decimal :carbs
