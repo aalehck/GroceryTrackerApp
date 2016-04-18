@@ -62,7 +62,7 @@
               </div>
               <div class="info">
                 <div class="title">
-                  <button data-toggle="modal" data-target=<%="#" + r.title %> class="astext"><%= r.title %></button>
+                  <button data-toggle="modal" data-target="<%="#" + r.title.parameterize %>" class="astext"><%= r.title %></button>
                 </div>
                 <div class="desc"><%= r.time %> minutes</div>
                 <div>
@@ -74,7 +74,7 @@
         </div>
 
         <!-- View Recipes -->
-        <div class="modal fade" id=<%= r.title %> tabindex="-1" role="dialog" aria-labelledby="modalLabel" aria-hidden="true">
+        <div class="modal fade" id="<%= r.title.parameterize %>" tabindex="-1" role="dialog" aria-labelledby="modalLabel" aria-hidden="true">
           <div class="modal-dialog">
             <div class="modal-content">
               <div class="modal-header">
