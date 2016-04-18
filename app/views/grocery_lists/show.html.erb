@@ -1,15 +1,20 @@
-<h2>Grocery List</h2>
+<title>Grocery List</title>
+<div id="wrapper">
+    <main>
+        <div id="content">
+            <h2>Grocery List</h2>
+	    <div id="inventory">
+		<% @user.grocery_list.items.each do |item| %>
+		    <% if item.list_amount > 0.0 %>
+			<%= render item %>
+		    <% end %>
+		<% end %>
+	    </div>
 
-<div id="inventory">
-    <% @user.grocery_list.items.each do |item| %>
-	<% if item.list_amount > 0.0 %>
-	    <%= render item %>
-	<% end %>
-    <% end %>
+	    <%= button_to "Add Items to Inventory", add_items_inventory_path %></br>
+            <%= render "items/form" %>
+        </div>
+    </main>
 </div>
-
-<%= button_to "Add Items to Inventory", add_items_inventory_path %></br>
-
-<%= render "items/form" %>
 
     

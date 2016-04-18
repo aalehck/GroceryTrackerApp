@@ -1,36 +1,127 @@
-<title></title>
+<title>Recipes</title>
 
 <div id="wrapper">
     <main>
-	<div id="content">
-	    <h2>Recipes</h2>
-	    <% @recipes.each do |r| %>
-		<%= r.title %>
-		<%= link_to image_tag('help_x_btn.png', size: "14x14"), recipe_path(:id => r.id), method: :delete, data: { confirm: 'Are you sure?' } %></br>
-		<%= r.time%> minutes</br>
-		<%= link_to "View Recipe", recipe_path(r.id) %></br></br>
-	    <% end %>
-            <h3>Search for a Recipe</h3>
+	<div id="content"><br>
+	    <!-- Search button -->
+        <div><button data-toggle="modal" data-target="#squarespaceModal" class="btn btn-primary">Search for a Recipe!</button></div>
+	    
+            <!-- Search Box -->
+            <div class="modal fade" id="squarespaceModal" tabindex="-1" role="dialog" aria-labelledby="modalLabel" aria-hidden="true">
+                <div class="modal-dialog">  
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span><span class="sr-only">Close</span></button>
+                            <h3 class="modal-title" id="lineModalLabel">Recipe Search</h3>
+                        </div>
+                        <div class="modal-body">
+                            <!-- content goes here -->
+                            <div class="form-group">
+                                <!-- our stuff -->
+                                <%= form_tag '/recipes/search', :method => 'get' do %>
+                                    <%= label_tag "Ethnicity" %></br>
+                                    <input class="form-control" <%= text_field_tag :cuisine %></br>
+	
+                                    <%= label_tag "Type of Diet" %></br>
+                                    <input class="form-control"<%= text_field_tag :diet %></br>
 
-            <%= form_tag '/recipes/search', :method => 'get' do %>
+                                    <%= label_tag "Number of Recipes" %></br>
+                                    <input class="form-control"<%= text_field_tag :number %></br>
 
-                <%= label_tag :cuisine %></br>
-                <%= text_field_tag :cuisine %></br>
-		
-                <%= label_tag :diet %></br>
-                <%= text_field_tag :diet %></br>
+                                    <%= label_tag :offset %></br>
+                                    <input class="form-control"<%= text_field_tag :offset %></br>
 
-                <%= label_tag :number %></br>
-                <%= text_field_tag :number %></br>
-
-                <%= label_tag :offset %></br>
-                <%= text_field_tag :offset %></br>
-
-                <%= label_tag :query %></br>
-                <%= text_field_tag :query %></br><br>
-
-                <%= submit_tag "Search" %>
-            <% end %><br><br>
-        </div>
+                                    <%= label_tag :query %></br>
+                                    <input class="form-control"<%= text_field_tag :query %></br>
+                            </div>
+                        </div>
+                                
+                        <div class="modal-footer">
+                            <div class="btn-group btn-group-justified" role="group" aria-label="group button">
+                                <div class="btn-group" role="group">
+                                    <%= submit_tag "Search", type: 'submit', class: "btn btn-default"%>
+                                    <!--<button type="button" class="btn btn-default" data-dismiss="modal"  role="button">Close</button>-->
+                                </div>
+                            </div>
+                        </div>    
+                                <% end %>
+                                <!-- end of our stuff -->
+                        </div>
+                    </div>
+                </div>
+	    <!-- End Search Box -->
+	    
+	    <!-- Saved Recipes -->
+        <h2>Recipes</h2>
+        
+        <% @recipes.each do |r| %>
+        
+            <div class="card">
+                <div class="col-lg-3 col-sm-6">
+                    <div class="card hovercard">
+                        <img class="cardheader" src="<%= r.information['image'] %>" />
+                        <div class="avatar">
+                            <img alt="" src="<%= r.information['image'] %>">
+                        </div>
+                        <div class="info">
+                            <div class="title">
+                                <button data-toggle="modal" data-target=<%="#" + r.title %> class="astext"><%= r.title %></button>
+                            </div>
+                            <div class="desc"><%= r.time %> minutes</div>
+                            <div>
+                                <%= link_to image_tag('help_x_btn.png', size: "14x14"), recipe_path(:id => r.id), method: :delete, data: { confirm: 'Are you sure?' } %>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+                
+                
+                	    
+            <!-- View Recipes -->
+            <div class="modal fade" id=<%= r.title %> tabindex="-1" role="dialog" aria-labelledby="modalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span><span class="sr-only">Close</span></button>
+                            <h3 class="modal-title" id="lineModalLabel"><%= r.title %></h3>
+                        </div>
+                        <div class="modal-body">
+                            <!-- content goes here -->
+                            <div class="form-group">
+                            <!-- our stuff -->
+                                <img class="center-block" src="<%= r.information['image'] %>" style="width:304px;height:228px;"></br></br>
+                                <% r.information['extendedIngredients'].each do |ingredient| %>
+                                    <% if not ingredient['originalString'].empty? %>
+                                        <table class="table table-striped">
+                                            <tbody>
+                                                <tr><td><%= ingredient['originalString'] %></td></tr>
+                                            </tbody>
+                                        </table>
+                                        <% else %>
+                                        <%= ingredient['name'] %></br>
+                                        Amount: <%= ingredient['amount']%> <%= ingredient['unit']%></br></br>
+                                    <% end %>
+                                <% end %>
+                            </div>
+                        </div>
+                                
+                        <div class="modal-footer">
+                            <div class="btn-group btn-group-justified" role="group" aria-label="group button">
+                                <div class="btn-group" role="group">
+                                    <button type="button" class="btn btn-default" data-dismiss="modal"  role="button">Close</button>
+                                </div>
+                            </div>
+                        </div>    
+                        <!-- end of our stuff -->
+                    </div>
+                </div>
+            </div>
+            <!--end -->
+        <% end %>
+        
+        
+        
+    </div>
     </main>
 </div>
