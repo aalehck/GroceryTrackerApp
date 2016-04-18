@@ -1,3 +1,15 @@
+<style>
+#spoonacularPriceBreakdownChart {
+  visibility: hidden;
+}
+.spoonacular-quickview{
+	visibility: hidden;
+}
+
+#spoonacularPriceBreakdownTable {
+	
+}
+</style>
 <h2>Grocery List</h2>
 
 <div id="inventory">
@@ -7,6 +19,19 @@
 	<% end %>
     <% end %>
 </div>
+	<pre id="spoonacular-ingredients" style="display:table-column">
+		<% @requestPrice.each do |item| %>
+			<%= item %>
+		<% end %>
+	</pre>
+	<div id="spoonacular-price-estimator"></div>
+<script type="text/javascript">
+	var spoonacularServings = 4;
+	var spoonacularPriceView = 2;
+</script>
+<script type="text/javascript" src="https://code.jquery.com/jquery-1.9.1.min.js"></script>
+<script type="text/javascript" src="https://spoonacular.com/cdn/spoonacular-1.5.min.js"></script>
+
 
 <%= button_to "Add Items to Inventory", add_items_inventory_path %></br>
 

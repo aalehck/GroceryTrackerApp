@@ -10,8 +10,11 @@ class GroceryListsController < ApplicationController
   def show
     @user = User.find(session[:user_id])
     @grocery_list = @user.grocery_list
+	@requestPrice = Array.new
+	@user.grocery_list.items.each do |item|
+	  	@requestPrice.push(item['name'])
+	end
   end
-
   def grocery_lists_params
     params.require(:grocery_lists).permit(:items)
   end
