@@ -5,6 +5,7 @@ class InventoriesController < ApplicationController
   def create
     @user = User.find(session[:user_id])
     @user.inventory = Inventories.create
+  end
 
   def add_items
     @user = User.find(session[:user_id])
@@ -13,12 +14,13 @@ class InventoriesController < ApplicationController
     @grocery_list.items.each do |item|
       if not item.amount.zero?
         inventory_item = @user.inventory.items.find_by_name(item.name)
-        if inventory_item.empty?
+        if inventory_item.nil?
           @inventory.items.create(:name => item.name, :amount => item.amount)
         else
-          Item.update(item.id, :amount => (inventory_item.amount + item.amount))
+          Item.update(inventory_item.id, :amount => (inventory_item.amount + item.amount))
         end
       end
+      item.destroy
     end
     redirect_to grocery_list_path
   end
@@ -26,6 +28,8 @@ class InventoriesController < ApplicationController
   def show
     @user = User.find(session[:user_id])
     @itemable, @inventory = @user.inventory
+    @itemable_id = make_itemable_id
+    @item = Item.new
   end
 
   def inventory_params

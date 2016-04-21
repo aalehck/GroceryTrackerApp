@@ -10,6 +10,7 @@ class GroceryListsController < ApplicationController
   def show
     @user = User.find(session[:user_id])
     @itemable, @grocery_list = @user.grocery_list
+    @itemable_id = make_itemable_id
     @item = Item.new
   end
 

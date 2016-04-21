@@ -1,6 +1,6 @@
 <p>
-    <%= link_to item.name, polymorphic_path(@itemable, :id => item.id, method: :show)%>   
-    <%= link_to image_tag('help_x_btn.png', size: "14x14"), polymorphic_path(@itemable, :id => item.id),
+    <%= link_to item.name, polymorphic_path([@itemable, item], @itemable_id => @itemable.id, :id => item.id, method: :show)%>   
+    <%= link_to image_tag('help_x_btn.png', size: "14x14"), polymorphic_path([@itemable, item], @itemable_id => @itemable.id, :id => item.id),
     method: :delete,
     data: { confirm: 'Are you sure?' } %></br>
     <%= item.amount %>

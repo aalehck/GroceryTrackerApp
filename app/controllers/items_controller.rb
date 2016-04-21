@@ -25,7 +25,6 @@ class ItemsController < ApplicationController
   end
 
   def find_itemable
-    puts item_params[:id]
     params.each do |name, value|
       puts name
       if name =~ /(.+)_id$/
