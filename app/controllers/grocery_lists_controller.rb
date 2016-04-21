@@ -9,11 +9,12 @@ class GroceryListsController < ApplicationController
 
   def show
     @user = User.find(session[:user_id])
-    @grocery_list = @user.grocery_list
+    @itemable, @grocery_list = @user.grocery_list
+    @item = Item.new
   end
 
   def grocery_lists_params
-    params.require(:grocery_lists).permit(:items)
+    params.require(:grocery_lists).permit(:items, :id, items_attributes: [:id])
   end
 
   private :grocery_lists_params

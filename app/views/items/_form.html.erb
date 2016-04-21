@@ -1,10 +1,12 @@
-<%= form_for ([@grocery_list, @grocery_list.items.build]) do |f| %>
+<%= @itemable %>
+
+<%= form_for([@itemable, @item]) do |f| %>
 
     <%= f.label :name %>
     <%= f.text_field :name %>
 
-    <%= f.label :list_amount %>
-    <%= f.text_field :list_amount %>
+    <%= f.label :amount %>
+    <%= f.text_field :amount %>
 
     <%= f.submit %>
 

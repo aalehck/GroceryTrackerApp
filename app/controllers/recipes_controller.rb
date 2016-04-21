@@ -24,9 +24,9 @@ class RecipesController < ApplicationController
       ingredient = @user.grocery_list.items.where('lower(name) = ?', i['name'])
 
       if ingredient.empty?
-        ingredient = @user.grocery_list.items.create(name: i['name'].downcase, list_amount: i['amount'])
+        ingredient = @user.grocery_list.items.create(name: i['name'].downcase, amount: i['amount'])
       else
-        Item.update(ingredient.id,:list_amount => ingredient.list_amount + i['amount'])
+        Item.update(ingredient.id,:amount => ingredient.list_amount + i['amount'])
       end
     end
 

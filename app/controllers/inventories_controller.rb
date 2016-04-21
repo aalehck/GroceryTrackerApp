@@ -1,13 +1,23 @@
 class InventoriesController < ApplicationController
   
   before_filter :authorize
+  
+  def create
+    @user = User.find(session[:user_id])
+    @user.inventory = Inventories.create
 
   def add_items
     @user = User.find(session[:user_id])
-    @inventory = []
-    @user.grocery_list.items.each do |x|
-      if x.list_amount != 0.0
-        Item.update(x.id, :inventory_amount => (x.inventory_amount + x.list_amount), :list_amount => 0.0)
+    @grocery_list = @user.grocery_list
+    @inventory = @user.inventory
+    @grocery_list.items.each do |item|
+      if not item.amount.zero?
+        inventory_item = @user.inventory.items.find_by_name(item.name)
+        if inventory_item.empty?
+          @inventory.items.create(:name => item.name, :amount => item.amount)
+        else
+          Item.update(item.id, :amount => (inventory_item.amount + item.amount))
+        end
       end
     end
     redirect_to grocery_list_path
@@ -15,13 +25,7 @@ class InventoriesController < ApplicationController
 
   def show
     @user = User.find(session[:user_id])
-    @inventory = []
-    @user.grocery_list.items.each do |x|
-      puts x.inventory_amount
-      if x.inventory_amount != 0.0
-        @inventory.append(x)
-      end
-    end
+    @itemable, @inventory = @user.inventory
   end
 
   def inventory_params

@@ -10,6 +10,7 @@ class UsersController < ApplicationController
     if @user.save
       session[:user_id] = @user.id
       @user.grocery_list = GroceryList.create
+      @user.inventory = Inventory.create
       redirect_to '/'
     else
       redirect_to '/signup'
