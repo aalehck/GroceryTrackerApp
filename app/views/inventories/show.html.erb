@@ -1,7 +1,15 @@
 <h2>Inventory</h2>
+<div id="wrapper">
+    <main>
+        <div id="content">
+            <h2>Grocery List</h2>
+	    <div id="inventory">
+		<% @user.inventory.items.each do |item| %>
+		    <%= render item %>
+		<% end %>
+	    </div>
 
-<% @inventory.each do |item| %>
-    <% if item.inventory_amount != 0.0 %>
-	<%= render item %>
-    <% end %>
-<% end %>
+            <%= render "items/form" %>
+        </div>
+    </main>
+</div>

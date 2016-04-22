@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160326235427) do
+ActiveRecord::Schema.define(version: 20160420134901) do
 
   create_table "grocery_lists", force: :cascade do |t|
     t.integer  "user_id"
@@ -21,10 +21,17 @@ ActiveRecord::Schema.define(version: 20160326235427) do
 
   add_index "grocery_lists", ["user_id"], name: "index_grocery_lists_on_user_id"
 
+  create_table "inventories", force: :cascade do |t|
+    t.integer  "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "inventories", ["user_id"], name: "index_inventories_on_user_id"
+
   create_table "items", force: :cascade do |t|
     t.string   "name"
-    t.decimal  "list_amount"
-    t.decimal  "inventory_amount", default: 0.0
+    t.decimal  "amount",        default: 0.0
     t.decimal  "cost"
     t.integer  "calories"
     t.decimal  "carbs"
@@ -46,14 +53,13 @@ ActiveRecord::Schema.define(version: 20160326235427) do
     t.decimal  "zinc"
     t.decimal  "b5"
     t.decimal  "potassium"
-    t.integer  "grocery_list_id"
-    t.integer  "recipe_id"
-    t.datetime "created_at",                     null: false
-    t.datetime "updated_at",                     null: false
+    t.integer  "itemable_id"
+    t.string   "itemable_type"
+    t.datetime "created_at",                  null: false
+    t.datetime "updated_at",                  null: false
   end
 
-  add_index "items", ["grocery_list_id"], name: "index_items_on_grocery_list_id"
-  add_index "items", ["recipe_id"], name: "index_items_on_recipe_id"
+  add_index "items", ["itemable_type", "itemable_id"], name: "index_items_on_itemable_type_and_itemable_id"
 
   create_table "recipes", force: :cascade do |t|
     t.string   "title"
