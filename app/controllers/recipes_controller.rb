@@ -21,12 +21,18 @@ class RecipesController < ApplicationController
     body = (eval(params[:information]))
 
     body['extendedIngredients'].each do |i|
-      ingredient = @user.grocery_list.items.where('lower(name) = ?', i['name'])
+      ingredient = @user.grocery_list.items.where('lower(name) = ?', i['name']).first
+      puts ingredient.inspect
 
-      if ingredient.empty?
-        ingredient = @user.grocery_list.items.create(name: i['name'].downcase, amount: i['amount'])
+      if ingredient.nil?
+        ingredient = @user.grocery_list.items.create(name: i['name'].downcase, amount: i['amount'], unit: i['unit'])
       else
-        Item.update(ingredient.id,:amount => ingredient.list_amount + i['amount'])
+        result_amount = measure_units("#{ingredient.amount} #{ingredient.unit}", "#{i['amount']} #{i['unit']}")
+        if result_amount.nil?
+           ingredient = @user.grocery_list.items.create(name: i['name'].downcase, amount: i['amount'], unit: i['unit'])
+        else 
+          Item.update(ingredient.id,:amount => result_amount)
+        end
       end
     end
 

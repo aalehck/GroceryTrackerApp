@@ -15,9 +15,14 @@ class InventoriesController < ApplicationController
       if not item.amount.zero?
         inventory_item = @user.inventory.items.find_by_name(item.name)
         if inventory_item.nil?
-          @inventory.items.create(:name => item.name, :amount => item.amount)
+          @inventory.items.create(:name => item.name, :amount => item.amount, unit: item.unit)
         else
-          Item.update(inventory_item.id, :amount => (inventory_item.amount + item.amount))
+          amount = measure_units("#{inventory_item.amount} #{inventory_item.unit}","#{item.amount} #{item.unit}")
+          if amount.nil?
+            @inventory.items.create(:name => item.name, :amount => item.amount, unit: item.unit)
+          else
+            Item.update(inventory_item.id, :amount => (inventory_item.amount + item.amount))
+          end
         end
       end
       item.destroy
