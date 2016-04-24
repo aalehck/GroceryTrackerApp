@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  get '/' => 'pages#home'
+  root to: 'pages#home'
 
   #Grocery List routes
   resource :grocery_list do
@@ -16,13 +16,13 @@ Rails.application.routes.draw do
   end
 
   #Recipe Routes
-  resources :recipes do 
-    collection do 
+  resources :recipes do
+    collection do
       get :search
       get :search_result
     end
   end
-  
+
   #User Routes
   get '/signup' => 'users#new'
   post '/newusers' => 'users#create'
