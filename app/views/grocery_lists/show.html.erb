@@ -1,4 +1,10 @@
 <title>Grocery List</title>
+<style>
+ #spoonacularPriceBreakdownChart {
+   visibility: hidden;
+ }
+ 
+ </style>
 <pre id="spoonacular-ingredients" style="display:none">
     <% @user.grocery_list.items.each do |item| %>
 	<%= item.amount%> <%= item.unit%> <%= item.name %>
