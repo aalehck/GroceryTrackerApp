@@ -17,7 +17,7 @@ class InventoriesController < ApplicationController
         if inventory_item.nil?
           @inventory.items.create(:name => item.name, :amount => item.amount, unit: item.unit)
         else
-          amount = measure_units("#{inventory_item.amount} #{inventory_item.unit}","#{item.amount} #{item.unit}")
+          amount = Item.measure_units("#{inventory_item.amount} #{inventory_item.unit}","#{item.amount} #{item.unit}")
           if amount.nil?
             @inventory.items.create(:name => item.name, :amount => item.amount, unit: item.unit)
           else
