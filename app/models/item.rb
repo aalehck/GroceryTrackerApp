@@ -7,7 +7,7 @@ class Item < ActiveRecord::Base
     units.each do |unit|
       if not Unit.defined?(unit)
         puts "MAKING A NEW ONE #{unit}"
-        Unit.define(unit) do |u|
+        Unit.define('unit') do |u|
           u.definition = Unit.new("1")
           u.aliases = %w{u unit.singularize, unit.pluralize}
           u.display_name = unit
@@ -15,7 +15,7 @@ class Item < ActiveRecord::Base
       end
     end
   end
-
+  
     def self.measure_units(base_item, new_item)
       Item.proper_units? base_item.split[1], new_item.split[1]
 
