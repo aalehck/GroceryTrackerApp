@@ -27,7 +27,7 @@ class RecipesController < ApplicationController
       if ingredient.nil?
         ingredient = @user.grocery_list.items.create(name: i['name'].downcase, amount: i['amount'], unit: i['unit'])
       else
-        result_amount = measure_units("#{ingredient.amount} #{ingredient.unit}", "#{i['amount']} #{i['unit']}")
+        result_amount = Item.measure_units("#{ingredient.amount} #{ingredient.unit}", "#{i['amount']} #{i['unit']}")
         if result_amount.nil?
            ingredient = @user.grocery_list.items.create(name: i['name'].downcase, amount: i['amount'], unit: i['unit'])
         else 

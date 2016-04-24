@@ -18,14 +18,11 @@ class ApplicationController < ActionController::Base
   end
 
   def measure_units(list_item, new_item)
-    og = list_item.to_unit
-    
-    begin
-      nw = new_item.to_unit
-    rescue
-      nw = (new_item.split)[0].to_unit
-    end
+    Item.proper_units? list_item, new_item
 
+    og = list_item.to_unit
+    nw = new_item.to_unit
+    
     if og =~ nw
       return (og + nw).scalar
     else
