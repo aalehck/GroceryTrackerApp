@@ -21,8 +21,7 @@ class RecipesController < ApplicationController
     body = (eval(params[:information]))
 
     body['extendedIngredients'].each do |i|
-      ingredient = @user.grocery_list.items.where('lower(name) = ?', i['name']).first
-      puts ingredient.inspect
+      ingredient = @user.grocery_list.items.find_by name: i['name'].downcase, unit: i['unit'] 
 
       if ingredient.nil?
         ingredient = @user.grocery_list.items.create(name: i['name'].downcase, amount: i['amount'], unit: i['unit'])

@@ -13,7 +13,7 @@ class InventoriesController < ApplicationController
     @inventory = @user.inventory
     @grocery_list.items.each do |item|
       if not item.amount.zero?
-        inventory_item = @user.inventory.items.find_by_name(item.name)
+        inventory_item = @user.inventory.items.find_by name: item.name, unit: item.unit
         if inventory_item.nil?
           @inventory.items.create(:name => item.name, :amount => item.amount, unit: item.unit)
         else
