@@ -32,11 +32,11 @@
     <% end %>
   </div>
 </div>
-<div style="text-align:center-block">
+<div align="center">
 <% page_number = (Integer(params[:offset]) / 10) + 2 %>
 <% if page_number != 2 %>
     <%= link_to "Page #{(page_number -1)}", :back %>
+    |
 <% end %>
-|
-<%= link_to "Page #{page_number.to_s}", :cuisine => params[:cuisine], :diet => params[:diet], :number => 10, :offset => (params[:offset].to_i + 10), :query => params[:query], html %>
+<%= link_to "Page #{page_number.to_s}", :cuisine => params[:cuisine], :diet => params[:diet], :number => 10, :offset => (params[:offset].to_i + 10), :query => params[:query] %>
 </div>
