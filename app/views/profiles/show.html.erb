@@ -1,0 +1,15 @@
+<h2>User Preferences</h2>
+<br/>
+<h3>Budget Preferences</h3>
+
+<%= render "budgets/form" %>
+
+<h3>Essentials</h3>
+
+<%= form_for(@profile, method: "put") do |f| %>
+
+    <%= f.label :essentials, "Essentials List:" %>
+    <%= f.text_field :essentials, :input_html => { :value => @profile.essentials }%>
+    
+    <%= f.submit "Update Essentials" %>
+<% end %>

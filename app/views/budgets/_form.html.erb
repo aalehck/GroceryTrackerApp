@@ -1,0 +1,14 @@
+<%= form_for([@profile, @budget], method: "put") do |f| %>
+
+    <%= f.label :budget_total, "Budget Total:" %>
+    <%= f.text_field :budget_total, :input_html => { :value => @budget.budget_total } %><br/><br/>
+
+    <%= f.radio_button :period, "weekly", :checked => @budget.period == "weekly" %>
+    <%= f.label :period, "Weekly" %><br/>
+    <%= f.radio_button :period, "biweekly", :checked => @budget.period == "biweekly" %>
+    <%= f.label :period, "Biweekly" %><br/>
+    <%= f.radio_button :period, "monthly", :checked => @budget.period = "monthly" %>
+    <%= f.label :period, "Monthly" %><br/>
+
+    <%= f.submit "Update Budget"%>
+<% end %>
