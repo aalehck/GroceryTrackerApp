@@ -4,7 +4,7 @@ class ItemsController < ApplicationController
 
   def create
     @itemable = find_itemable
-    Item.proper_units? item_params[:unit]
+    Item.define_units item_params[:unit]
     @item = @itemable.items.create(item_params)
     redirect_to '/grocery_list'
   end

@@ -21,12 +21,11 @@ class RecipesController < ApplicationController
     body = (eval(params[:information]))
 
     body['extendedIngredients'].each do |i|
-      ingredient = @user.grocery_list.items.find_by name: i['name'].downcase, unit: i['unit'] 
-
+      ingredient = @user.grocery_list.find_compatible_item(i['name'], i['unit'])
       if ingredient.nil?
         ingredient = @user.grocery_list.items.create(name: i['name'].downcase, amount: i['amount'], unit: i['unit'])
       else
-        result_amount = Item.measure_units("#{ingredient.amount} #{ingredient.unit}", "#{i['amount']} #{i['unit']}")
+        result_amount = Item.make_proper_units("#{ingredient.amount} #{ingredient.unit}", "#{i['amount']} #{i['unit']}")
         if result_amount.nil?
            ingredient = @user.grocery_list.items.create(name: i['name'].downcase, amount: i['amount'], unit: i['unit'])
         else 

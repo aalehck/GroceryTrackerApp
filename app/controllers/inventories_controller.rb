@@ -13,15 +13,15 @@ class InventoriesController < ApplicationController
     @inventory = @user.inventory
     @grocery_list.items.each do |item|
       if not item.amount.zero?
-        inventory_item = @user.inventory.items.find_by name: item.name, unit: item.unit
+        inventory_item = @user.inventory.find_compatible_item(item.name, item.unit)
         if inventory_item.nil?
           @inventory.items.create(:name => item.name, :amount => item.amount, unit: item.unit)
         else
-          amount = Item.measure_units("#{inventory_item.amount} #{inventory_item.unit}","#{item.amount} #{item.unit}")
+          amount = Item.make_proper_units("#{inventory_item.amount} #{inventory_item.unit}","#{item.amount} #{item.unit}")
           if amount.nil?
             @inventory.items.create(:name => item.name, :amount => item.amount, unit: item.unit)
           else
-            Item.update(inventory_item.id, :amount => (inventory_item.amount + item.amount))
+            Item.update(inventory_item.id, :amount => amount)
           end
         end
       end

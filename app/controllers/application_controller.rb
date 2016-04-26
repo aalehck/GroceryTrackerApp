@@ -17,20 +17,11 @@ class ApplicationController < ActionController::Base
     end
   end
 
-  def measure_units(list_item, new_item)
-    Item.proper_units? list_item, new_item
-
-    og = list_item.to_unit
-    nw = new_item.to_unit
-    
-    if og =~ nw
-      return (og + nw).scalar
-    else
-      return nil
-    end
+  def non_empty_unit unit
+    unit.strip.empty? ? nil : unit
   end
 
-  helper_method :current_user, :make_itemable_id, :measure_units
+  helper_method :current_user, :make_itemable_id, :non_empty_unit
 
   def authorize
     redirect_to '/login' unless current_user
