@@ -11,6 +11,7 @@ class GroceryListsController < ApplicationController
     @user = User.find(session[:user_id])
     @itemable, @grocery_list = @user.grocery_list
     @itemable_id = make_itemable_id
+    @budget = @user.profile.budget
     @item = Item.new
   end
 

@@ -29,6 +29,7 @@ class InventoriesController < ApplicationController
     @user = User.find(session[:user_id])
     @itemable, @inventory = @user.inventory
     @itemable_id = make_itemable_id
+    @budget = @user.profile.budget
     @item = Item.new
   end
 
