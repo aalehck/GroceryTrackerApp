@@ -25,11 +25,8 @@
                 <%= label_tag "Type of Diet" %></br>
                 <input class="form-control"<%= text_field_tag :diet %></br>
 
-                <%= label_tag "Number of Recipes" %></br>
-                <input class="form-control"<%= text_field_tag :number %></br>
-
-                <%= label_tag :offset %></br>
-                <input class="form-control"<%= text_field_tag :offset %></br>
+		<%= hidden_field_tag :number, 10 %>
+		<%= hidden_field_tag :offset, 0 %>
 
                 <%= label_tag :query %></br>
                 <input class="form-control"<%= text_field_tag :query %></br>

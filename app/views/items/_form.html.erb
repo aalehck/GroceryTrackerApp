@@ -6,8 +6,13 @@
     <%= f.label :amount %>
     <%= f.text_field :amount %>
 
+    <%= f.label :unit %>
+    <%= f.text_field :unit %>
+
     <%= hidden_field_tag @itemable_id, @itemable.id %>
 
     <%= f.submit %>
 
 <% end %>
+
+
