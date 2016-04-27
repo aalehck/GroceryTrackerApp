@@ -10,15 +10,7 @@
         <div id="content">
             <h2>Grocery List</h2>
 	    <div id="inventory">
-		<table>
-		    <tbody>
-			<% @user.grocery_list.items.each do |item| %>
-			    <tr>
-				<%= render item %>
-			    </tr>
-			<% end %>
-		    </tbody>
-		</table>
+		<%= render "items/update_form" %>
 	    </div>
 
 	    <%= button_to "Add Items to Inventory", add_items_inventory_path %></br>

@@ -3,15 +3,7 @@
         <div id="content">
 	    <h2>Inventory</h2>
 	    <div id="inventory">
-		<table>
-		    <tbody>
-			<% @user.inventory.items.each do |item| %>
-			    <tr>
-				<%= render item %>
-			    </tr>
-			<% end %>
-		    </tbody>
-		</table>
+		<%= render "items/update_form" %>
 	    </div>
 
             <%= render "items/form" %>

@@ -14,11 +14,19 @@ class ItemsController < ApplicationController
     @item = @itemable.items.find(params[:id])
   end
 
+  def update
+    
+  end
+
   def destroy
     @itemable = find_itemable
     @item = @itemable.items.find(params[:id])
     @item.destroy
     redirect_to @itemable
+  end
+
+  def destroy_all
+    
   end
 
   def item_params

@@ -1,0 +1,24 @@
+<table>
+    <tbody>
+	<tr>
+	    <th>Name</th>
+	    <th>Amount</th>
+	    <th>Unit</th>
+	</tr>
+	<%= form_for(@itemable, method: "put") do |f| %>
+	    <% @itemable.items.each do |item| %>
+		<%= fields_for :items do |i| %>
+		    <tr>
+			<td><%= i.text_field :name, :value => item.name, :readonly => true%></td>
+			<td><%= i.text_field :amount, :value => item.amount %></td>
+			<td><%= i.text_field :unit, :value => item.unit %></td>
+		    </tr>
+		<% end %>
+	    <% end %>
+	    <tr>
+		<td><%= f.submit "Update Items" %></td>
+	    </tr>
+	<% end %>
+    </tbody>
+</table>
+</br>
