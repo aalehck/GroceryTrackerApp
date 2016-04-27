@@ -26,6 +26,12 @@ Rails.application.routes.draw do
   #User Routes
   get '/signup' => 'users#new'
   post '/newusers' => 'users#create'
+   
+  #Profile and Budget Routes
+  resource :profile do
+    resource :budget
+  end
+
 
   #Session Routes
   get '/login' => 'sessions#new'

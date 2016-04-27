@@ -1,0 +1,15 @@
+<h2>User Preferences</h2>
+<br/>
+<h3>Budget Preferences</h3>
+
+<%= render "budgets/form" %>
+
+<h3>Essentials</h3>
+
+<%= form_tag(profile_path, method: "put") do %>
+
+    <%= label_tag :essentials, "Essentials List:" %>
+    <%= text_field_tag :essentials, @user.essentials %>
+    
+    <%= submit_tag "Update Essentials" %>
+<% end %>

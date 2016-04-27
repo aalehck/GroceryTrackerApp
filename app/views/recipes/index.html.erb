@@ -1,5 +1,4 @@
 <title>Recipes</title>
-
 <div id="wrapper">
   <main>
 	   <div id="content"><br>
@@ -42,6 +41,7 @@
               </div>
             </div>
           <% end %>
+	  
         </div>
       </div>
 	    <!-- End Search Box -->
@@ -96,6 +96,18 @@
                     <% end %>
                   <% end %>
                 </div>
+		<pre id="spoonacular-ingredients" style="display:none">
+		    <% r.information['extendedIngredients'].each do |ingredient| %>
+			<%= ingredient['amount'] %> <%= ingredient['unit']%> <%= ingredient['name'] %>
+		    <% end %>	
+		</pre>
+		<div id="spoonacular-price-estimator"></div>
+		<script type="text/javascript">
+		 var spoonacularServings = 1;
+		 var spoonacularPriceView = 1;
+		</script>
+		<script type="text/javascript" src="https://code.jquery.com/jquery-1.9.1.min.js"></script>
+		<script type="text/javascript" src="https://spoonacular.com/cdn/spoonacular-1.5.min.js"></script>
               </div>
 
               <div class="modal-footer">

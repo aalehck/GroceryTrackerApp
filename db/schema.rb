@@ -11,7 +11,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160420134901) do
+ActiveRecord::Schema.define(version: 20160426181543) do
+
+  create_table "budgets", force: :cascade do |t|
+    t.decimal  "budget_total", default: 0.0
+    t.decimal  "budget_used",  default: 0.0
+    t.string   "period"
+    t.date     "start"
+    t.integer  "profile_id"
+    t.datetime "created_at",                 null: false
+    t.datetime "updated_at",                 null: false
+  end
+
+  add_index "budgets", ["profile_id"], name: "index_budgets_on_profile_id"
 
   create_table "grocery_lists", force: :cascade do |t|
     t.integer  "user_id"
@@ -62,6 +74,15 @@ ActiveRecord::Schema.define(version: 20160420134901) do
 
   add_index "items", ["itemable_type", "itemable_id"], name: "index_items_on_itemable_type_and_itemable_id"
 
+  create_table "profiles", force: :cascade do |t|
+    t.text     "essentials"
+    t.integer  "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "profiles", ["user_id"], name: "index_profiles_on_user_id"
+
   create_table "recipes", force: :cascade do |t|
     t.string   "title"
     t.integer  "time"
@@ -77,7 +98,6 @@ ActiveRecord::Schema.define(version: 20160420134901) do
     t.string   "user_name"
     t.string   "email"
     t.string   "password_digest"
-    t.decimal  "budget"
     t.datetime "created_at",      null: false
     t.datetime "updated_at",      null: false
   end

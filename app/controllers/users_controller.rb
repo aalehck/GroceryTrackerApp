@@ -11,6 +11,8 @@ class UsersController < ApplicationController
       session[:user_id] = @user.id
       @user.grocery_list = GroceryList.create
       @user.inventory = Inventory.create
+      @user.profile = Profile.create
+      @user.profile.budget = Budget.create
       redirect_to '/'
     else
       redirect_to '/signup'
