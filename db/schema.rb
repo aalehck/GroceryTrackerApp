@@ -32,6 +32,7 @@ ActiveRecord::Schema.define(version: 20160420134901) do
   create_table "items", force: :cascade do |t|
     t.string   "name"
     t.decimal  "amount",        default: 0.0
+    t.string   "unit"
     t.decimal  "cost"
     t.integer  "calories"
     t.decimal  "carbs"

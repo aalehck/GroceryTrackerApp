@@ -21,12 +21,21 @@ class RecipesController < ApplicationController
     body = (eval(params[:information]))
 
     body['extendedIngredients'].each do |i|
-      ingredient = @user.grocery_list.items.where('lower(name) = ?', i['name'])
-
-      if ingredient.empty?
-        ingredient = @user.grocery_list.items.create(name: i['name'].downcase, amount: i['amount'])
+      # Awful hack because I'm not sure how else handle units = '', which REALLY breaks
+      # the units gem being used
+      if i['unit'].strip.empty?
+        i['unit'] = " "
+      end
+      ingredient = @user.grocery_list.find_compatible_item(i['name'], i['unit'])
+      if ingredient.nil?
+        ingredient = @user.grocery_list.items.create(name: i['name'].downcase, amount: i['amount'], unit: i['unit'])
       else
-        Item.update(ingredient.id,:amount => ingredient.list_amount + i['amount'])
+        result_amount = Item.make_proper_units("#{ingredient.amount} #{ingredient.unit}", "#{i['amount']} #{i['unit']}")
+        if result_amount.nil?
+           ingredient = @user.grocery_list.items.create(name: i['name'].downcase, amount: i['amount'], unit: i['unit'])
+        else 
+          Item.update(ingredient.id,:amount => result_amount)
+        end
       end
     end
 

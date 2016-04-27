@@ -1,18 +1,38 @@
 <title>Grocery List</title>
+<style>
+ #spoonacularPriceBreakdownChart {
+   visibility: hidden;
+ }
+ 
+ </style>
+<pre id="spoonacular-ingredients" style="display:none">
+    <% @user.grocery_list.items.each do |item| %>
+	<%= item.amount%> <%= item.unit%> <%= item.name %>
+    <% end %>
+</pre>
 <div id="wrapper">
     <main>
         <div id="content">
             <h2>Grocery List</h2>
 	    <div id="inventory">
-		<% @user.grocery_list.items.each do |item| %>
-		    <%= render item %>
-		<% end %>
+		<table>
+		    <tbody>
+			<% @user.grocery_list.items.each do |item| %>
+			    <tr>
+				<%= render item %>
+			    </tr>
+			<% end %>
+		    </tbody>
+		</table>
 	    </div>
 
 	    <%= button_to "Add Items to Inventory", add_items_inventory_path %></br>
-            <%= render "items/form" %>
+            <%= render "items/form" %><br/>
+	    <h2>Price Breakdown</h2>
+	    <div id="spoonacular-price-estimator"></div>
         </div>
     </main>
 </div>
-
+<script type="text/javascript" src="https://code.jquery.com/jquery-1.9.1.min.js"></script>
+<script type="text/javascript" src="https://spoonacular.com/cdn/spoonacular-1.5.min.js"></script>
     

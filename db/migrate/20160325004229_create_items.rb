@@ -3,6 +3,7 @@ class CreateItems < ActiveRecord::Migration
     create_table :items do |t|
       t.string  :name
       t.decimal :amount, :default => 0.0
+      t.string  :unit
       t.decimal :cost
       t.integer :calories
       t.decimal :carbs

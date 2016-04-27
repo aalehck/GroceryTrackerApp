@@ -1,3 +1,5 @@
+require 'ruby-units'
+
 class ApplicationController < ActionController::Base
   # Prevent CSRF attacks by raising an exception.
   # For APIs, you may want to use :null_session instead.
@@ -15,7 +17,11 @@ class ApplicationController < ActionController::Base
     end
   end
 
-  helper_method :current_user, :make_itemable_id
+  def non_empty_unit unit
+    unit.strip.empty? ? nil : unit
+  end
+
+  helper_method :current_user, :make_itemable_id, :non_empty_unit
 
   def authorize
     redirect_to '/login' unless current_user

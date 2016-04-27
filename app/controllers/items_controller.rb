@@ -4,6 +4,7 @@ class ItemsController < ApplicationController
 
   def create
     @itemable = find_itemable
+    Item.define_units item_params[:unit]
     @item = @itemable.items.create(item_params)
     redirect_to '/grocery_list'
   end
@@ -21,17 +22,20 @@ class ItemsController < ApplicationController
   end
 
   def item_params
-    params.require(:item).permit(:name, :amount, :id)
+    params.require(:item).permit(:name, :amount, :unit, :id)
   end
 
   def find_itemable
     params.each do |name, value|
-      puts name
       if name =~ /(.+)_id$/
         return $1.classify.constantize.find(value)
       end
     end
     nil
+  end
+
+  def compare_units 
+
   end
   
   private :item_params, :find_itemable
