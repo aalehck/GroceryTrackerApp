@@ -3,7 +3,12 @@ Rails.application.routes.draw do
 
   #Grocery List routes
   resource :grocery_list do
-    resources :items
+    resources :items do
+      collection do
+        put :update
+        delete :delete_all
+      end
+    end
   end
 
   #Inventory routes
@@ -12,7 +17,12 @@ Rails.application.routes.draw do
       post :add_items
     end
 
-    resources :items
+    resources :items do
+      collection do
+        put :update
+        delete :delete_all
+      end
+    end
   end
 
   #Recipe Routes

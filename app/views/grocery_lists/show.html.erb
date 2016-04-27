@@ -12,12 +12,14 @@
 	    <div id="inventory">
 		<%= render "items/update_form" %>
 	    </div>
-
-	    <%= button_to "Add Items to Inventory", add_items_inventory_path %></br>
-            <%= render "items/form" %><br/>
+	    <div class="row">
+		<div class="span2"<%= button_to "Add Items to Inventory", add_items_inventory_path %></div>
+		<div class="span2"><%= button_to "Delete All Items", delete_all_grocery_list_items_path, method: "delete", params: {@itemable_id => @itemable.id} %></div>
+	    </div>
+	    <%= render "items/form" %><br/>
 	    <h2>Price Breakdown</h2>
 	    <div id="spoonacular-price-estimator"></div>
-	</div> 
+	</div>
     </main>
 </div>
 <script type="text/javascript" src="https://code.jquery.com/jquery-1.9.1.min.js"></script>

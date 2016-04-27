@@ -15,7 +15,22 @@ class ItemsController < ApplicationController
   end
 
   def update
+    @user = User.find(session[:user_id])
+    @itemable = find_itemable
+
+    updates = item_params
+    to_update = {}
+    updates.each  do |item|
+      h1 = @itemable.items.find(item[:item_id])
+      puts h1.inspect
+      if h1[:amount] != item[:amount].to_f
+        to_update.merge!(item[:item_id] => { :amount => item[:amount]})
+      end
+    end
     
+    Item.update(to_update.keys, to_update.values)
+    
+    redirect_to @itemable
   end
 
   def destroy
@@ -25,12 +40,14 @@ class ItemsController < ApplicationController
     redirect_to @itemable
   end
 
-  def destroy_all
-    
+  def delete_all
+    @itemable = find_itemable
+    @itemable.items.delete_all
+    redirect_to @itemable
   end
 
   def item_params
-    params.require(:item).permit(:name, :amount, :unit, :id)
+    params.permit(:name, :amount, :unit, :id, :item => [:name, :amount, :unit, :item_id]).require(:item)
   end
 
   def find_itemable
