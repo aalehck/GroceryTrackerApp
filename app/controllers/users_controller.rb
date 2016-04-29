@@ -13,7 +13,7 @@ class UsersController < ApplicationController
       @user.inventory = Inventory.create
       @user.profile = Profile.create
       @user.profile.budget = Budget.create
-      redirect_to '/'
+      redirect_to '/profile'
     else
       redirect_to '/signup'
     end
