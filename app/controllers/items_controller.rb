@@ -30,7 +30,7 @@ class ItemsController < ApplicationController
     
     Item.update(to_update.keys, to_update.values)
     
-    redirect_to @itemable
+    redirect_to :back
   end
 
   def destroy
