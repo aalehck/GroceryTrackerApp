@@ -1,0 +1,7 @@
+$("#add-all").submit( function(eventObj) {
+    $('<input />').attr('type', 'hidden')
+		  .attr('name', "pricing")
+		  .attr('value', $("#spoonacularPriceBreakdownTable").text())
+		  .appendTo('#add-all');
+    return true;
+});
