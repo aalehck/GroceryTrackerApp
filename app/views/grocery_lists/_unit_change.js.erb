@@ -1,0 +1,9 @@
+// Ensure that the user can't mess up unit conversions if they change units or amounts
+//
+$("#item__unit").change(function(){
+    $("#item__amount").attr("readonly", true);
+});
+
+$("#item__amount").change(function(){
+    $("#item__unit").attr("readonly", true);
+});
