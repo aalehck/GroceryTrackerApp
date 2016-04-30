@@ -3,16 +3,9 @@
         <div id="content">
 	    <h2>Inventory</h2>
 	    <div id="inventory">
-		<table>
-		    <tbody>
-			<% @user.inventory.items.each do |item| %>
-			    <tr>
-				<%= render item %>
-			    </tr>
-			<% end %>
-		    </tbody>
-		</table>
+		<%= render "items/update_form" %><br/>
 	    </div>
+	    <%= button_to "Delete All Items", delete_all_inventory_items_path, method: "delete", params: {@itemable_id => @itemable.id} %><br/>
 
             <%= render "items/form" %>
         </div>

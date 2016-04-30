@@ -11,6 +11,10 @@ class InventoriesController < ApplicationController
     @user = User.find(session[:user_id])
     @grocery_list = @user.grocery_list
     @inventory = @user.inventory
+
+    price = inventory_params[:pricing].match(/([0-9]*\.[0-9][0-9])$/)
+    @user.profile.budget.update(:budget_used => price.to_s.to_f + @user.profile.budget.budget_used)
+    
     @grocery_list.items.each do |item|
       if not item.amount.zero?
         inventory_item = @user.inventory.find_compatible_item(item.name, item.unit)
@@ -39,7 +43,7 @@ class InventoriesController < ApplicationController
   end
 
   def inventory_params
-    params.require(:inventories).permit(:items)
+    params.permit(:items, :pricing)
   end
 
 end

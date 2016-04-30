@@ -1,5 +1,4 @@
 <title>Grocery List</title>
-
 <pre id="spoonacular-ingredients" style="display:none">
     <% @user.grocery_list.items.each do |item| %>
 	<%= item.amount%> <%= item.unit%> <%= item.name %>
@@ -10,24 +9,24 @@
         <div id="content">
             <h2>Grocery List</h2>
 	    <div id="inventory">
-		<table>
-		    <tbody>
-			<% @user.grocery_list.items.each do |item| %>
-			    <tr>
-				<%= render item %>
-			    </tr>
-			<% end %>
-		    </tbody>
-		</table>
+		<%= render "items/update_form" %>
 	    </div>
-
-	    <%= button_to "Add Items to Inventory", add_items_inventory_path %></br>
-            <%= render "items/form" %><br/>
+	    <div class="row">
+		<div class="span2"><%= button_to "Add Items to Inventory", add_items_inventory_path, :form => {:id => "add-all"} %></div>
+		<div class="span2"><%= button_to "Delete All Items", delete_all_grocery_list_items_path, method: "delete", params: {@itemable_id => @itemable.id} %></div>
+	    </div>
+	    <%= render "items/form" %><br/>
+	    <div>
+		Budget Used: <%= @budget.budget_used%><br/>
+	    </div>
 	    <h2>Price Breakdown</h2>
-	    <div id="spoonacular-price-estimator"></div>
-	</div> 
+	    <div id="spoonacular-price-estimator">fuck</div>
+	</div>
     </main>
 </div>
 <script type="text/javascript" src="https://code.jquery.com/jquery-1.9.1.min.js"></script>
 <script type="text/javascript" src="https://spoonacular.com/cdn/spoonacular-1.5.min.js"></script>
+<script type="text/javascript">
+ <%= render "spoon_observer.js"%>
+</script>
     

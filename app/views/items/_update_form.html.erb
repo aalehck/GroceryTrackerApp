@@ -1,0 +1,32 @@
+<% if not @itemable.items.empty? %>
+    <%= form_tag([@itemable, @item], method: "put") do  %>
+	<table>
+	    <tbody>
+		<tr>
+		    <th>Name</th>
+		    <th>Amount</th>
+		    <th>Unit</th>
+		</tr>
+		
+		<%= hidden_field_tag @itemable_id, @itemable.id %>
+		<% @itemable.items.each do |item| %>
+		    <%= fields_for "item[]" do |i| %>
+			<tr>
+			    <td><%= i.text_field :name, :value => item.name, :readonly => true %></td>
+			    <td><%= i.text_field :amount, :value => item.amount %></td>
+			    <td><%= i.text_field :unit, :value => item.unit, :readonly => true %></td>
+			    <td><%= link_to image_tag('help_x_btn.png', size: "14x14"), polymorphic_path([@itemable, item], @itemable_id => @itemable.id, :id => item.id),
+				method: :delete,
+				data: { confirm: 'Are you sure?' } %></td>
+			    <%= i.hidden_field :item_id, :value => item.id%>
+			</tr>
+		    <% end %>
+		<% end %>
+		<tr>
+		    <td><%= submit_tag "Update Items" %></td>
+		</tr>
+	    </tbody>
+	</table>
+    <% end %>
+</br>
+<% end %>
