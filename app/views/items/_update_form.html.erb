@@ -12,9 +12,9 @@
 		<% @itemable.items.each do |item| %>
 		    <%= fields_for "item[]" do |i| %>
 			<tr>
-			    <td><%= i.text_field :name, :value => item.name, :readonly => true %></td>
+			    <td><%= i.text_field :name, :value => item.name %></td>
 			    <td><%= i.text_field :amount, :value => item.amount %></td>
-			    <td><%= i.text_field :unit, :value => item.unit, :readonly => true %></td>
+			    <td><%= i.text_field :unit, :value => item.unit %></td>
 			    <td><%= link_to image_tag('help_x_btn.png', size: "14x14"), polymorphic_path([@itemable, item], @itemable_id => @itemable.id, :id => item.id),
 				method: :delete,
 				data: { confirm: 'Are you sure?' } %></td>
