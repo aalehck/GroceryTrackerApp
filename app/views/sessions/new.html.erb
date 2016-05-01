@@ -6,16 +6,18 @@
   <h1> User Login </h1>
   <%= form_for(:session, url: '/login') do |f| %>
     <ul>
-        <li>
-            <label>Username</label>
-            <%= f.text_field :user_name %>
-        </li>
-        <li>
-            <label>Password</label>
-            <%= f.password_field :password %>
-        </li><br><br>
-        <li><%= f.submit "Login" %></li>
+      <li>
+        <%= f.label :user_name, "Username" %>
+        <%= f.text_field :user_name %>
+      </li>
+      <li>
+        <%= f.label :password %>
+        <%= f.password_field :password %>
+      </li><br><br>
+      <li>
+        <%= f.submit "Login" %>
         Don't have an account? <%= link_to 'Create Account', '/signup'%>
+      </li>
     </ul>
   <% end %>
 </div>
