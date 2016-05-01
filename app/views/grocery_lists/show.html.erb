@@ -33,7 +33,8 @@
 			
 			<br>
 			<div>
-				Budget Used: <%= @budget.budget_used%><br/>
+			    <label>Budget Total</label>: <%= @budget.budget_total%><br/>
+			    <label>Budget Used</label>:  <%= @budget.budget_used%><br/>
 			</div>
 			<h2>Price Breakdown</h2>
 			<div id="spoonacular-price-estimator"></div>
@@ -46,7 +47,5 @@
 <script type="text/javascript">
 	<%= render "spoon_observer.js"%>
 </script>
-<script type="text/javascript">
-	<%= render "unit_change.js" %>
-</script>
+
     
