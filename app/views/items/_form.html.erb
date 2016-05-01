@@ -1,22 +1,40 @@
-<%= form_for [@itemable, @item], :html => {:class => "form-inline"} do |f| %>
+
+<div class="modal-dialog">
+    <%= form_for [@itemable, @item], :html => {:class => "modal-content"} do |f| %>
+        <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span><span class="sr-only">Close</span></button>
+            <h3 class="modal-title" id="lineModalLabel">Add Item</h3>
+        </div>
+
+        <div class="modal-body">
+            <!-- content goes here -->
+            <div class="form-group">
     
-    <div class="form-group">
-	<%= f.label :name %>
-	<%= f.text_field :name, :class => "form-control" %>
-    </div>
+	<%= f.label :name %><br>
+	<%= f.text_field :name, :class => "form-control" %><br>
 
-    <div class="form-group">
-	<%= f.label :amount %>
-	<%= f.text_field :amount, :class => "form-control" %>
-    </div>
+	<%= f.label :amount %><br>
+	<%= f.text_field :amount, :class => "form-control" %><br>
 
-    <div class="form-group">
-	<%= f.label :unit %>
-	<%= f.text_field :unit, :class => "form-control" %>
-    </div>
+	<%= f.label :unit %><br>
+	<%= f.text_field :unit, :class => "form-control" %><br>
     
     <%= hidden_field_tag @itemable_id, @itemable.id %>
+    
+    
+    
+            </div>
+        </div>
+        <div class="modal-footer">
+            <div class="btn-group btn-group-justified" role="group" aria-label="group button">
+                <div class="btn-group" role="group">
+            
+                    <%= submit_tag "Create Item", type: 'submit', class: "btn btn-default"%>
+                </div>
+            </div>
+        </div>
 
-    <%= f.submit "Create item", :class => 'btn btn-small' %>
-<% end %>
+    
+    <% end %>
+</div>
 

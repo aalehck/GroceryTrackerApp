@@ -1,45 +1,50 @@
 <% if not @itemable.items.empty? %>
-    <%= form_tag([@itemable, @item], method: "put", :class => "form-inline") do  %>
+	<%= form_tag([@itemable, @item], method: "put", :class => "form-inline") do  %>
 	<div class="container">
-	    <div class="row cold-md-8">
-		<table class="table table-hover" style="width: 40%;">
-		    <thead>
-			<tr>
-			    <th class="col-md-2">Name</th>
-			    <th class="col-md-1">Amount</th>
-			    <th class="col-md-2">Unit</th>
-			</tr>
-		    </thead>
-		    <%= hidden_field_tag @itemable_id, @itemable.id %>
-		    <div class="form-group">
-			
-			    <tbody>
-				<% @itemable.items.each do |item| %>
-				    <%= fields_for "item[]" do |i| %>
+		<div class="row cold-md-8">
+			<table class="table table-hover" style="width: 40%;">
+				<thead>
 					<tr>
-					    <div class="input-group">
-					    <td><%= i.text_field :name, :value => item.name, :class => "form-control"  %></td>
-					    <td><%= i.text_field :amount, :value => item.amount, :class => "form-control" %></td>
-					    <td><%= i.text_field :unit, :value => item.unit, :class => "form-control" %></td>
-					    <td><%= link_to image_tag('help_x_btn.png', size: "14x14"), polymorphic_path([@itemable, item], @itemable_id => @itemable.id, :id => item.id),
-						method: :delete,
-						data: { confirm: 'Are you sure?' } %></td>
-					    <%= i.hidden_field :item_id, :value => item.id%>
-					    </div>
+						<th class="col-md-2">Name</th>
+						<th class="col-md-1">Amount</th>
+						<th class="col-md-2">Unit</th>
 					</tr>
-				    <% end %>
-				<% end %>
-			    </tbody>
+				</thead>
+				<%= hidden_field_tag @itemable_id, @itemable.id %>
+				<div class="form-group">
 			
-		    </div>
-		    <tr><br/></tr>
-		    <tr>
-			<td><%= submit_tag "Update Items", :class => 'btn btn-small' %></td>
-		    </tr>
+					<tbody>
+						<% @itemable.items.each do |item| %>
+						<%= fields_for "item[]" do |i| %>
+						<tr>
+							<div class="input-group">
+								<td><%= i.text_field :name, :value => item.name, :class => "form-control"  %></td>
+								<td><%= i.text_field :amount, :value => item.amount, :class => "form-control" %></td>
+								<td><%= i.text_field :unit, :value => item.unit, :class => "form-control" %></td>
+								<td><%= link_to image_tag('help_x_btn.png', size: "14x14"), polymorphic_path([@itemable, item], @itemable_id => @itemable.id, :id => item.id),
+									method: :delete,
+									data: { confirm: 'Are you sure?' } %></td>
+								<%= i.hidden_field :item_id, :value => item.id%>
+							</div>
+						</tr>
+						<% end %>
+						<% end %>
+					</tbody>
+			
+				</div>
+				
+				<tr><br/></tr>
+				</table>
+				<table style="width: 40%;">
+				<tr>
+					<td><%= submit_tag "Update Items", :class => 'btn btn-small' %></td>
+					<% end %>
+					<td><%= button_to "Delete All Items", polymorphic_path([ActiveModel::Naming.singular_route_key(@itemable), :items], action: "delete_all"), method: "delete", params: {@itemable_id => @itemable.id}, :class => 'btn btn-small' %></td>
+				</tr>
 		    
-		</table>
-	    </div>
+			</table>
+		</div>
 	</div>
-    <% end %>
-</br>
+    
+	</br>
 <% end %>

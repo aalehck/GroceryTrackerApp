@@ -1,13 +1,28 @@
+<title>Inventory</title>
 <div id="wrapper">
     <main>
         <div id="content">
-	    <h2>Inventory</h2>
-	    <div id="inventory">
-		<%= render "items/update_form" %><br/>
-	    </div>
-	    <%= button_to "Delete All Items", delete_all_inventory_items_path, method: "delete", params: {@itemable_id => @itemable.id}, :class => 'btn btn-small' %><br/>
+			<div class="container">
+				<div class="row">
+					<div class="col-sm-2">
+						<h2>Inventory</h2>
+					</div>
+					<div class="col-sm-2">
+						<br><button data-toggle="modal" data-target="#squarespaceModal" class="btn btn-primary">Add an Item!</button>
+					</div>
+				</div>
+			</div>
 
-            <%= render "items/form" %>
+			<div id="inventory">
+				<%= render "items/update_form" %><br/>
+			</div>
+	    
+            <!--START ADD-->
+			<div class="modal fade" id="squarespaceModal" tabindex="-1" role="dialog" aria-labelledby="modalLabel" aria-hidden="true">
+				<%= render "items/form" %>
+			</div>
+			<!--END-->
+            
         </div>
     </main>
 </div>
