@@ -6,7 +6,7 @@ class ItemsController < ApplicationController
     @itemable = find_itemable
     Item.define_units item_params[:unit]
     @item = @itemable.items.create(item_params)
-    redirect_to '/grocery_list'
+    redirect_to :back
   end
 
   def show
