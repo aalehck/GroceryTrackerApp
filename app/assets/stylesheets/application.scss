@@ -193,10 +193,16 @@
 			}
 			.btn-primary:hover, 
 			.btn-primary:focus, 
-			.btn-primary:active.focus, 
+			.btn-primary:active.focus,
+			.btn-primary:active:focus,
 			.btn-primary.active.focus, 
-			.btn.active {
+			.btn-primary:active,
+			.btn-primary.active{
 				background: #003C1E;
+			}
+			.btn-small:hover,
+			.btn-small:active:focus {
+				background:darkgrey;
 			}
 			
 			.rows {

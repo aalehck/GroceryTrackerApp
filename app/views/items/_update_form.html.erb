@@ -32,16 +32,14 @@
 					</tbody>
 			
 				</div>
-				
 				<tr><br/></tr>
-				</table>
-				<table style="width: 40%;">
+			</table>
+			<table style="width: 40%;">
 				<tr>
 					<td><%= submit_tag "Update Items", :class => 'btn btn-small' %></td>
 					<% end %>
 					<td><%= button_to "Delete All Items", polymorphic_path([ActiveModel::Naming.singular_route_key(@itemable), :items], action: "delete_all"), method: "delete", params: {@itemable_id => @itemable.id}, :class => 'btn btn-small' %></td>
 				</tr>
-		    
 			</table>
 		</div>
 	</div>

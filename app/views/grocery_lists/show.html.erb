@@ -31,11 +31,18 @@
 			</div>
 			<!--END-->
 			
+			<!--PRICE INFO-->
 			<br>
-			<div>
-				Budget Used: <%= @budget.budget_used%><br/>
+			<div class="container">
+				<div class="form-inline">
+					<div class="col-sm-3">
+						<h2>Price Breakdown</h2>
+					</div>
+					<div class="col-sm-3">
+						<br>Budget Used: <%= @budget.budget_used%><br/>
+					</div>
+				</div>
 			</div>
-			<h2>Price Breakdown</h2>
 			<div id="spoonacular-price-estimator"></div>
 			
 		</div>
