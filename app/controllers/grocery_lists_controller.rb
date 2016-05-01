@@ -20,9 +20,13 @@ class GroceryListsController < ApplicationController
 	  end
 	end
 	if @low_inventory_array.size > 0.0
-        GroceryListMailer.low_inventory_email(@low_inventory_array).deliver_now
+        GroceryListMailer.low_inventory_email(@low_inventory_array, @user).deliver_now
     end
   end
+  
+  def gmail
+     @gmail = params[:textGmail]
+   end
 
   def grocery_lists_params
     params.require(:grocery_lists).permit(:items, :id, items_attributes: [:id])
