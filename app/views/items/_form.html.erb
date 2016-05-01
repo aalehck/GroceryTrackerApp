@@ -1,18 +1,22 @@
-<%= form_for([@itemable, @item]) do |f| %>
+<%= form_for [@itemable, @item], :html => {:class => "form-inline"} do |f| %>
+    
+    <div class="form-group">
+	<%= f.label :name %>
+	<%= f.text_field :name, :class => "form-control" %>
+    </div>
 
-    <%= f.label :name %>
-    <%= f.text_field :name %>
+    <div class="form-group">
+	<%= f.label :amount %>
+	<%= f.text_field :amount, :class => "form-control" %>
+    </div>
 
-    <%= f.label :amount %>
-    <%= f.text_field :amount %>
-
-    <%= f.label :unit %>
-    <%= f.text_field :unit %>
-
+    <div class="form-group">
+	<%= f.label :unit %>
+	<%= f.text_field :unit, :class => "form-control" %>
+    </div>
+    
     <%= hidden_field_tag @itemable_id, @itemable.id %>
 
-    <%= f.submit %>
-
+    <%= f.submit "Create item", :class => 'btn btn-small' %>
 <% end %>
-
 

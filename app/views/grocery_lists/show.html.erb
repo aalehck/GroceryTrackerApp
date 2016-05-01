@@ -12,15 +12,15 @@
 		<%= render "items/update_form" %>
 	    </div>
 	    <div class="row">
-		<div class="span2"><%= button_to "Add Items to Inventory", add_items_inventory_path, :form => {:id => "add-all"} %></div>
-		<div class="span2"><%= button_to "Delete All Items", delete_all_grocery_list_items_path, method: "delete", params: {@itemable_id => @itemable.id} %></div>
-	    </div>
+		<div class="col-md-4"><%= button_to "Add Items to Inventory", add_items_inventory_path, :form => {:id => "add-all"}, :class => 'btn btn-small' %></div>
+		<div class="col-md-2"><%= button_to "Delete All Items", delete_all_grocery_list_items_path, method: "delete", params: {@itemable_id => @itemable.id}, :class => 'btn btn-small' %></div>
+	    </div><br/>
 	    <%= render "items/form" %><br/>
 	    <div>
 		Budget Used: <%= @budget.budget_used%><br/>
 	    </div>
 	    <h2>Price Breakdown</h2>
-	    <div id="spoonacular-price-estimator">fuck</div>
+	    <div id="spoonacular-price-estimator"></div>
 	</div>
     </main>
 </div>

@@ -5,7 +5,7 @@
 	    <div id="inventory">
 		<%= render "items/update_form" %><br/>
 	    </div>
-	    <%= button_to "Delete All Items", delete_all_inventory_items_path, method: "delete", params: {@itemable_id => @itemable.id} %><br/>
+	    <%= button_to "Delete All Items", delete_all_inventory_items_path, method: "delete", params: {@itemable_id => @itemable.id}, :class => 'btn btn-small' %><br/>
 
             <%= render "items/form" %>
         </div>
