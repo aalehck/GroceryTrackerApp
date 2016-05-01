@@ -2,7 +2,7 @@ require 'gmail'
 class GroceryListMailer < ActionMailer::Base#ApplicationMailer
   default from: 'grocerylisttracker@gmail.com'
    
-  def low_inventory_email(arr)
+  def low_inventory_email(arr, user)
     string = ""
     arr.each do |item|
       string = string + " " + item 		
@@ -10,7 +10,7 @@ class GroceryListMailer < ActionMailer::Base#ApplicationMailer
 	
     gmail = Gmail.new('grocerylisttracker', 'uwmcapstone')
       gmail.deliver do
-	    to "grocerylisttracker@gmail.com"
+	    to user.email  #"grocerylisttracker@gmail.com"
 	    subject "Your GroceryListTracker Inventory is running low!"
 	    text_part do
 	      body "Need to replenish " + string
