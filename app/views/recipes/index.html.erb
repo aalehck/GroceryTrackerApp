@@ -2,8 +2,19 @@
 <div id="wrapper">
   <main>
 	   <div id="content"><br>
+	   <div class="container">
+	     <div class="row">
+            <div class="col-sm-2">
+                <h2>Recipes</h2>
+            </div>
+            <div class="col-sm-2">
+                <br><button data-toggle="modal" data-target="#squarespaceModal" class="btn btn-primary">Search for a Recipe!</button>
+            </div>
+	     </div>
+	   </div>
+	   
       <!-- Search button -->
-      <div><button data-toggle="modal" data-target="#squarespaceModal" class="btn btn-primary">Search for a Recipe!</button></div>
+
 
       <!-- Search Box -->
       <div class="modal fade" id="squarespaceModal" tabindex="-1" role="dialog" aria-labelledby="modalLabel" aria-hidden="true">
@@ -46,7 +57,7 @@
 	    <!-- End Search Box -->
 
 	    <!-- Saved Recipes -->
-      <h2>Recipes</h2>
+      
 
       <% @recipes.each do |r| %>
         <div class="card">

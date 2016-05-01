@@ -39,6 +39,9 @@ Rails.application.routes.draw do
    
   #Profile and Budget Routes
   resource :profile do
+    collection do
+      post :add_essentials
+    end
     resource :budget
   end
 

@@ -18,7 +18,7 @@ class RecipesController < ApplicationController
   def create
     @user = User.find(session[:user_id])
 
-    body = (eval(params[:information]))
+    body  = JSON.parse params[:information].gsub("=>", ":")
 
     body['extendedIngredients'].each do |i|
       # Awful hack because I'm not sure how else handle units = '', which REALLY breaks

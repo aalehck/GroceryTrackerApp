@@ -1,15 +1,27 @@
-<h2>User Preferences</h2>
-<br/>
-<h3>Budget Preferences</h3>
+<title>Profile</title>
+<div id="wrapper">
+    <main>
+        <div id="content">
 
-<%= render "budgets/form" %>
+	    <h2>User Preferences</h2>
+	    <br/>
+	    <h3>Budget Preferences</h3>
 
-<h3>Essentials</h3>
+	    <%= render "budgets/form" %>
 
-<%= form_for(@profile, method: "put") do |f| %>
+	    <h3>Essentials</h3>
 
-    <%= f.label :essentials, "Essentials List:" %>
-    <%= f.text_field :essentials, :input_html => { :value => @profile.essentials }%>
-    
-    <%= f.submit "Update Essentials" %>
-<% end %>
+	    <%= button_to "Add Essentials to Grocery List",add_essentials_profile_path, :class => 'btn btn-small'%><br/>
+
+	    <%= form_for(@profile, method: "put") do |f| %>
+		<div class="row">
+		    <div class="col-md-8">
+			<%= f.label :essentials, "Essentials List:" %>
+			<%= f.text_field :essentials, :input_html => { :value => @profile.essentials }, :class => "form-control" %>
+		    </div>
+		</div>
+		<%= f.submit "Update Essentials", :class => 'btn btn-small' %>
+	    <% end %>
+	</div>
+    </main>
+</div>

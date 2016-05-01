@@ -6,7 +6,7 @@ class ItemsController < ApplicationController
     @itemable = find_itemable
     Item.define_units item_params[:unit]
     @item = @itemable.items.create(item_params)
-    redirect_to '/grocery_list'
+    redirect_to :back
   end
 
   def show
@@ -23,10 +23,12 @@ class ItemsController < ApplicationController
     updates.each  do |item|
       h1 = @itemable.items.find(item[:item_id])
       puts h1.inspect
-      if h1[:amount] != item[:amount].to_f
-        to_update.merge!(item[:item_id] => { :amount => item[:amount]})
+      if h1[:amount] != item[:amount].to_f || h1[:name] != item[:name] || h1[:unit] != item[:unit]
+        to_update.merge!(item[:item_id] => {:name => item[:name], :amount => item[:amount], :unit => item[:unit]})
       end
     end
+
+    puts to_update
     
     Item.update(to_update.keys, to_update.values)
     
@@ -37,13 +39,13 @@ class ItemsController < ApplicationController
     @itemable = find_itemable
     @item = @itemable.items.find(params[:id])
     @item.destroy
-    redirect_to @itemable
+    redirect_to :back
   end
 
   def delete_all
     @itemable = find_itemable
     @itemable.items.delete_all
-    redirect_to @itemable
+    redirect_to :back
   end
 
   def item_params
