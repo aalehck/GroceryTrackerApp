@@ -42,13 +42,13 @@ class ItemsController < ApplicationController
     @itemable = find_itemable
     @item = @itemable.items.find(params[:id])
     @item.destroy
-    redirect_to @itemable
+    redirect_to :back
   end
 
   def delete_all
     @itemable = find_itemable
     @itemable.items.delete_all
-    redirect_to @itemable
+    redirect_to :back
   end
 
   def item_params
