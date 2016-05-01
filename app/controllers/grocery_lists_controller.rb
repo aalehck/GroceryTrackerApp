@@ -20,7 +20,7 @@ class GroceryListsController < ApplicationController
 	  end
 	end
 	if @low_inventory_array.size > 0.0
-        GroceryListMailer.low_inventory_email(@low_inventory_array).deliver_now
+        GroceryListMailer.low_inventory_email(@low_inventory_array, @user).deliver_now
     end
   end
 
