@@ -24,9 +24,6 @@ class ItemsController < ApplicationController
       h1 = @itemable.items.find(item[:item_id])
       puts h1.inspect
       if h1[:amount] != item[:amount].to_f || h1[:name] != item[:name] || h1[:unit] != item[:unit]
-        if h1[:unit] != item[:unit] && Unit.defined?(item[:unit])
-          item[:amount] = "#{item[:amount]} #{h1[:unit]}".to_unit.convert_to(item[:unit]).scalar
-        end
         to_update.merge!(item[:item_id] => {:name => item[:name], :amount => item[:amount], :unit => item[:unit]})
       end
     end
