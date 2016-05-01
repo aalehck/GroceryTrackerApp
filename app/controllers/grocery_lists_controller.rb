@@ -13,6 +13,15 @@ class GroceryListsController < ApplicationController
     @itemable_id = make_itemable_id
     @budget = @user.profile.budget
     @item = Item.new
+	@low_inventory_array = Array.new
+	@user.grocery_list.items.each do |item|
+      if item.amount < 1.0
+		@low_inventory_array.push(item.name)		
+	  end
+	end
+	if @low_inventory_array.size > 0.0
+        GroceryListMailer.low_inventory_email(@low_inventory_array).deliver_now
+    end
   end
 
   def grocery_lists_params
