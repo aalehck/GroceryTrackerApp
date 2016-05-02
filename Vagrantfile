@@ -81,7 +81,7 @@ Vagrant.configure(2) do |config|
     gem install bundle
 
     # Install dependencies for building gem native extensions
-    sudo apt-get install -y ruby-dev libgmp3-dev
+    sudo apt-get install -y ruby-dev libgmp3-dev libpq-dev
 
     # Uglifier requires nodejs
     sudo apt-get install -y nodejs
