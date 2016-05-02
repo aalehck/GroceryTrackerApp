@@ -17,10 +17,10 @@ ActiveRecord::Schema.define(version: 20160426181543) do
     t.decimal  "budget_total", default: 0.0
     t.decimal  "budget_used",  default: 0.0
     t.string   "period"
-    t.date     "start"
+    t.date     "start",        default: '2016-05-01'
     t.integer  "profile_id"
-    t.datetime "created_at",                 null: false
-    t.datetime "updated_at",                 null: false
+    t.datetime "created_at",                          null: false
+    t.datetime "updated_at",                          null: false
   end
 
   add_index "budgets", ["profile_id"], name: "index_budgets_on_profile_id"
