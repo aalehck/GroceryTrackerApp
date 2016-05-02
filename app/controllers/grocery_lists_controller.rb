@@ -23,6 +23,10 @@ class GroceryListsController < ApplicationController
         GroceryListMailer.low_inventory_email(@low_inventory_array, @user).deliver_now
     end
   end
+  
+  def gmail
+     @gmail = params[:textGmail]
+   end
 
   def grocery_lists_params
     params.require(:grocery_lists).permit(:items, :id, items_attributes: [:id])

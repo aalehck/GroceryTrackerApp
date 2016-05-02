@@ -10,7 +10,7 @@ class GroceryListMailer < ActionMailer::Base#ApplicationMailer
 	
     gmail = Gmail.new('grocerylisttracker', 'uwmcapstone')
       gmail.deliver do
-	    to user.email  #"grocerylisttracker@gmail.com"
+	    to user.email #"grocerylisttracker@gmail.com"
 	    subject "Your GroceryListTracker Inventory is running low!"
 	    text_part do
 	      body "Need to replenish " + string
