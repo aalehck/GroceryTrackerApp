@@ -11,20 +11,16 @@
 	    <div id="inventory">
 		<table>
 		    <tbody>
-			<% @user.grocery_list.items.each do |item| %>
-			    <tr>
-				<%= render item %>
-			    </tr>
-			<% end %>
+			<div id="spoonacular-ingredient-visualizer"></div>
+			<script type="text/javascript">
+			 var spoonacularServings = 2;
+			 var spoonacularMeasure = 'us';
+			 var spoonacularView = 'grid';
+			</script>
+			
 		    </tbody>
 		</table>
 	    </div>
-		<div id="spoonacular-ingredient-visualizer"></div>
-		<script type="text/javascript">
-		 var spoonacularServings = 2;
-		 var spoonacularMeasure = 'us';
-		 var spoonacularView = 'grid';
-		</script>
 	    <%= button_to "Add Items to Inventory", add_items_inventory_path %></br>
             <%= render "items/form" %><br/>
 	    <h2>Price Breakdown</h2>
