@@ -20,17 +20,24 @@
 					</div>
 				</div>
 			</div>
-					
+
 			<div id="inventory">
 				<%= render "items/update_form" %>
 			</div>
-			
+
+      <div id="spoonacular-ingredient-visualizer"></div>
+      <script type="text/javascript">
+       var spoonacularServings = 2;
+       var spoonacularMeasure = 'us';
+       var spoonacularView = 'grid';
+      </script>
+
 			<!--START ADD-->
 			<div class="modal fade" id="squarespaceModal" tabindex="-1" role="dialog" aria-labelledby="modalLabel" aria-hidden="true">
 				<%= render "items/form" %>
 			</div>
 			<!--END-->
-			
+
 			<!--PRICE INFO-->
 			<br>
 			<div class="container">
@@ -44,16 +51,13 @@
 					</div>
 				</div>
 			</div>
-			
+
 			<div id="spoonacular-price-estimator"></div>
-			
+
 		</div>
 	</main>
 </div>
-<script type="text/javascript" src="https://code.jquery.com/jquery-1.9.1.min.js"></script>
 <script type="text/javascript" src="https://spoonacular.com/cdn/spoonacular-1.5.min.js"></script>
 <script type="text/javascript">
 	<%= render "spoon_observer.js"%>
 </script>
-
-    
