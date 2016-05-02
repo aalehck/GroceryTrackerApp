@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160426181543) do
+ActiveRecord::Schema.define(version: 20160502215514) do
 
   create_table "budgets", force: :cascade do |t|
     t.decimal  "budget_total", default: 0.0
