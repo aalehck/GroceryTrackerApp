@@ -2,7 +2,9 @@ class BudgetsController < ApplicationController
 
   def update
     @user = User.find(session[:user_id])
-    @user.profile.budget.update(budget_params)
+    parameters = budget_params
+    parameters[:start] = Date.today
+    @user.profile.budget.update(parameters)
     redirect_to profile_path
   end
 

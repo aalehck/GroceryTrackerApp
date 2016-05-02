@@ -5,7 +5,13 @@ class ItemsController < ApplicationController
   def create
     @itemable = find_itemable
     Item.define_units item_params[:unit]
-    @item = @itemable.items.create(item_params)
+    compatible = @itemable.find_compatible_item(item_params[:name], item_params[:unit])
+    if not compatible.nil?
+      Item.update(compatible.id, :amount => Item.make_proper_units("#{compatible[:amount]} #{compatible[:unit]}", "#{item_params[:amount]} #{item_params[:unit]}"))
+    else
+      @item = @itemable.items.create(item_params)
+    end
+    
     redirect_to :back
   end
 

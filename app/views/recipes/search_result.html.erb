@@ -55,8 +55,15 @@
                     <%= ingredient %>
                 <% end %>
             </pre>
-
-            <div id="spoonacular-price-estimator"></div>
+	    <div class="row">
+		<div class="col-md-4">
+		    <label> MyPlate Standard </label><br>
+		    <%= image_tag "myplate", size: "300x275" %>
+		</div>
+		<div class="col-md-6">
+		    <div id="spoonacular-price-estimator"></div>
+		</div>
+	    </div>
             <script type="text/javascript">
                 var spoonacularServings = 4;
                 var spoonacularPriceView = 2;
@@ -66,7 +73,6 @@
             </div>
             <script type="text/javascript" src="https://spoonacular.com/cdn/spoonacular-1.5.min.js"></script>
             <!--END-->
-
         </div>
     </main>
 </div>

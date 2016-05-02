@@ -4,7 +4,7 @@ class CreateBudgets < ActiveRecord::Migration
       t.decimal :budget_total, :default => 0.0
       t.decimal :budget_used, :default => 0.0
       t.string  :period
-      t.date    :start
+      t.date    :start, :default => Date.today
       t.references :profile, index: true, foreign_key: true
 
       t.timestamps null: false
