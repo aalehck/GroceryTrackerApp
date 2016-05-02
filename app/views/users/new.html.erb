@@ -7,19 +7,19 @@
   <%= form_for :user, url: '/newusers' do |f| %>
     <ul>
       <li>
-        <label>Username</label>
+        <%= f.label :user_name, "Username" %>
         <%= f.text_field :user_name %>
       </li>
       <li>
-        <label>Email</label>
+        <%= f.label :email %>
         <%= f.text_field :email %>
       </li><br><br><br>
       <li>
-        <label>Password</label>
+        <%= f.label :password %>
         <%= f.password_field :password %>
       </li>
       <li>
-        <label>Confirmation</label>
+        <%= f.label :password_confirmation, "Confirmation" %>
         <%= f.password_field :password_confirmation %>
       </li></br></br>
       <li><%= f.submit "Submit" %></li>

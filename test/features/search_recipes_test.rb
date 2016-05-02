@@ -2,7 +2,7 @@ require "test_helper"
 
 feature "Searching for Recipes" do
   before do
-    login
+    signup_and_login
 
     visit recipes_path
     click_on "Search for a Recipe!"
