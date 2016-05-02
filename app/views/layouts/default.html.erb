@@ -22,9 +22,9 @@
                     <ul class="nav navbar-nav navbar-right">
                         <% if current_user %>
                             <li class="dropdown">
-                                <a href="#" style="color:#202321;" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><%= current_user.user_name %>
+                                <a href="#" style="color:#202321; background:#1BA35E;" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><%= current_user.user_name %>
                                 <span class="caret"></span></a>
-                                <ul class="dropdown-menu">
+                                <ul class="dropdown-menu" style="background-color: #1BA35E;">
                                     <li><a><%= link_to 'Logout', '/logout' %></a></li>
                                 </ul>
                             </li>
