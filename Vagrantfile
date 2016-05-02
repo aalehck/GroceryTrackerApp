@@ -83,6 +83,10 @@ Vagrant.configure(2) do |config|
     # Install dependencies for building gem native extensions
     sudo apt-get install -y ruby-dev libgmp3-dev libpq-dev
 
+    # Postgres
+    sudo apt-get install -y postgresql
+    sudo -u postgres createuser -s vagrant
+
     # Uglifier requires nodejs
     sudo apt-get install -y nodejs
   SHELL

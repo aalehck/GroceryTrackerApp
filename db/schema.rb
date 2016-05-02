@@ -13,6 +13,9 @@
 
 ActiveRecord::Schema.define(version: 20160502215514) do
 
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "budgets", force: :cascade do |t|
     t.decimal  "budget_total", default: 0.0
     t.decimal  "budget_used",  default: 0.0
@@ -23,7 +26,7 @@ ActiveRecord::Schema.define(version: 20160502215514) do
     t.datetime "updated_at",                          null: false
   end
 
-  add_index "budgets", ["profile_id"], name: "index_budgets_on_profile_id"
+  add_index "budgets", ["profile_id"], name: "index_budgets_on_profile_id", using: :btree
 
   create_table "grocery_lists", force: :cascade do |t|
     t.integer  "user_id"
@@ -31,7 +34,7 @@ ActiveRecord::Schema.define(version: 20160502215514) do
     t.datetime "updated_at", null: false
   end
 
-  add_index "grocery_lists", ["user_id"], name: "index_grocery_lists_on_user_id"
+  add_index "grocery_lists", ["user_id"], name: "index_grocery_lists_on_user_id", using: :btree
 
   create_table "inventories", force: :cascade do |t|
     t.integer  "user_id"
@@ -39,7 +42,7 @@ ActiveRecord::Schema.define(version: 20160502215514) do
     t.datetime "updated_at", null: false
   end
 
-  add_index "inventories", ["user_id"], name: "index_inventories_on_user_id"
+  add_index "inventories", ["user_id"], name: "index_inventories_on_user_id", using: :btree
 
   create_table "items", force: :cascade do |t|
     t.string   "name"
@@ -72,7 +75,7 @@ ActiveRecord::Schema.define(version: 20160502215514) do
     t.datetime "updated_at",                  null: false
   end
 
-  add_index "items", ["itemable_type", "itemable_id"], name: "index_items_on_itemable_type_and_itemable_id"
+  add_index "items", ["itemable_type", "itemable_id"], name: "index_items_on_itemable_type_and_itemable_id", using: :btree
 
   create_table "profiles", force: :cascade do |t|
     t.text     "essentials"
@@ -81,7 +84,7 @@ ActiveRecord::Schema.define(version: 20160502215514) do
     t.datetime "updated_at", null: false
   end
 
-  add_index "profiles", ["user_id"], name: "index_profiles_on_user_id"
+  add_index "profiles", ["user_id"], name: "index_profiles_on_user_id", using: :btree
 
   create_table "recipes", force: :cascade do |t|
     t.string   "title"
@@ -92,7 +95,7 @@ ActiveRecord::Schema.define(version: 20160502215514) do
     t.datetime "updated_at",  null: false
   end
 
-  add_index "recipes", ["user_id"], name: "index_recipes_on_user_id"
+  add_index "recipes", ["user_id"], name: "index_recipes_on_user_id", using: :btree
 
   create_table "users", force: :cascade do |t|
     t.string   "user_name"
