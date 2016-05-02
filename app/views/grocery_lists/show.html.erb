@@ -25,13 +25,6 @@
 				<%= render "items/update_form" %>
 			</div>
 
-      <div id="spoonacular-ingredient-visualizer"></div>
-      <script type="text/javascript">
-       var spoonacularServings = 2;
-       var spoonacularMeasure = 'us';
-       var spoonacularView = 'grid';
-      </script>
-
 			<!--START ADD-->
 			<div class="modal fade" id="squarespaceModal" tabindex="-1" role="dialog" aria-labelledby="modalLabel" aria-hidden="true">
 				<%= render "items/form" %>
@@ -46,8 +39,10 @@
 						<h2>Price Breakdown</h2>
 					</div>
 					<div class="col-sm-3">
-						<br><label>Budget Total</label>: <%= @budget.budget_total%><br/>
+						<br>
+						<label>Budget Total</label>: <%= @budget.budget_total%><br/>
 						<label>Budget Used</label>:  <%= @budget.budget_used%><br/>
+						<label>Budget Resets On</label>: <%= @budget.budget_period_date%>
 					</div>
 				</div>
 			</div>

@@ -9,7 +9,7 @@
                         <h2><%= @body['title'] %></h2>
                     </div>
             		<div class="col-sm-6">
-                        <%= form_tag recipes_path, :method => :post do %>
+                            <%= form_tag recipes_path, :method => :post, :id => "save-recipe" do %>
                             <%= hidden_field_tag :information, @body %>
                             <br><%= submit_tag "Save!", type: 'submit', class: "btn btn-small"%>
                         <% end %>
@@ -76,3 +76,4 @@
         </div>
     </main>
 </div>
+
