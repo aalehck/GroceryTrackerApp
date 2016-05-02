@@ -16,6 +16,11 @@ module LoginHelper
     click_on 'Login'
   end
 
+  def logout
+    visit root_path
+    click_on "Logout"
+  end
+
   def default_username
     "Joe"
   end

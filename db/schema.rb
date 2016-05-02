@@ -16,7 +16,7 @@ ActiveRecord::Schema.define(version: 20160426181543) do
   create_table "budgets", force: :cascade do |t|
     t.decimal  "budget_total", default: 0.0
     t.decimal  "budget_used",  default: 0.0
-    t.string   "period"
+    t.string   "period",       default: "weekly"
     t.date     "start",        default: '2016-05-02'
     t.integer  "profile_id"
     t.datetime "created_at",                          null: false
