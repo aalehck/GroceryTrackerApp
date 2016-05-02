@@ -16,8 +16,8 @@
                     </div>
                 </div>
             </div>
-            		    
-            
+
+
             <!--FOOD INFO-->
             <div class="container">
                 <div class="row">
@@ -40,22 +40,22 @@
                 </div>
             </div>
         <!-- END -->
-        
-        
-        
-        
+
+
+
+
         <!--PRICE INFO-->
             <h3>Price Breakdown</h3>
-            
+
             <div class="container">
 				<div class="row">
 					<div class="col-sm-8">
             <pre id="spoonacular-ingredients" style="display:none">
                 <% @getCost.each do |ingredient| %>
                     <%= ingredient %>
-                <% end %>	
+                <% end %>
             </pre>
-            
+
             <div id="spoonacular-price-estimator"></div>
             <script type="text/javascript">
                 var spoonacularServings = 4;
@@ -64,11 +64,9 @@
             </div>
             </div>
             </div>
-            <script type="text/javascript" src="https://code.jquery.com/jquery-1.9.1.min.js"></script>
             <script type="text/javascript" src="https://spoonacular.com/cdn/spoonacular-1.5.min.js"></script>
             <!--END-->
-            
+
         </div>
     </main>
 </div>
-
