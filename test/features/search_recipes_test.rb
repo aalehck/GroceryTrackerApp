@@ -14,7 +14,7 @@ feature "Searching for Recipes" do
 
     page.must_have_content "Search Results"
     # TODO Mock search results. Real search results can change, breaking our tests
-    page.must_have_content "Kale, Black Bean and Avocado Burrito Bowl"
+    page.must_have_content "Low Calorie Strawberry Banana Kale Smoothie"
   end
 
   scenario "searching by type of diet" do
@@ -23,7 +23,7 @@ feature "Searching for Recipes" do
 
     page.must_have_content "Search Results"
     # TODO Mock search results. Real search results can change, breaking our tests
-    page.must_have_content "Kale and Quinoa Salad with Black Beans"
+    page.must_have_content "Cilantro Salsa"
   end
 
   scenario "searching by query" do
